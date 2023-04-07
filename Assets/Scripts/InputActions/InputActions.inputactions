@@ -18,7 +18,7 @@
             "bindings": [
                 {
                     "name": "WASD",
-                    "id": "25a6cb4d-a534-48e1-8f2e-3bab3b760851",
+                    "id": "e24f08f1-01b9-40de-9cf2-81bca204d7e8",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -28,8 +28,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "4ee403dc-241f-479f-95e3-698b764e396f",
+                    "name": "Up",
+                    "id": "e820699e-0924-47c0-bdde-b0acf83b6d2a",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -39,19 +39,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "0b3e1d94-4660-44b4-b27f-4dc125b7b348",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "de7f104c-fe9d-4a7b-b146-085e4de3ff1d",
+                    "name": "Left",
+                    "id": "a3093396-22b7-4bd6-9a07-aa8ec002b856",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -61,8 +50,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "361b3ee5-7f27-4c2d-9d9c-ad2b51303d56",
+                    "name": "Right",
+                    "id": "32e6bcc9-8dc2-4f17-bb91-39b9bdea6e5b",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -103,17 +92,6 @@
                     "name": "up",
                     "id": "c9ae12de-5184-4659-a182-18d7bcec377c",
                     "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "f4e3d2c3-b20e-4ed7-b304-eb72eca49923",
-                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",

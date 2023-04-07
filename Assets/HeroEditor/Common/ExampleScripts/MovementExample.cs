@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.HeroEditor.Common.CharacterScripts;
+﻿using Assets.HeroEditor.Common.CharacterScripts;
 using UnityEngine;
 
 namespace Assets.HeroEditor.Common.ExampleScripts
@@ -9,11 +8,8 @@ namespace Assets.HeroEditor.Common.ExampleScripts
     /// </summary>
     public class MovementExample : MonoBehaviour
     {
-        public enum PlayerType { FirstPlayer, SecondPlayer }
-
         public Character Character;
         public CharacterController Controller; // https://docs.unity3d.com/ScriptReference/CharacterController.html
-        public PlayerType playerInputType;
 
         private Vector3 _speed = Vector3.zero;
         private InputActions _input;
@@ -38,12 +34,7 @@ namespace Assets.HeroEditor.Common.ExampleScripts
 
         private void Update()
         {
-            var direction = playerInputType switch
-            {
-                PlayerType.FirstPlayer => _input.FirstPlayer.Move.ReadValue<Vector2>(),
-                PlayerType.SecondPlayer => _input.SecondPlayer.Move.ReadValue<Vector2>(),
-                _ => throw new ArgumentOutOfRangeException(nameof(playerInputType))
-            };
+            var direction = _input.SecondPlayer.Move.ReadValue<Vector2>();
 
             Move(direction);
 
