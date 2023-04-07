@@ -1,4 +1,5 @@
-﻿using Assets.HeroEditor.Common.CharacterScripts;
+﻿using System;
+using Assets.HeroEditor.Common.CharacterScripts;
 using UnityEngine;
 
 namespace Assets.HeroEditor.Common.ExampleScripts
@@ -8,12 +9,20 @@ namespace Assets.HeroEditor.Common.ExampleScripts
     /// </summary>
     public class MovementExample : MonoBehaviour
     {
+        public enum PlayerType { FirstPlayer, SecondPlayer }
+
         public Character Character;
         public CharacterController Controller; // https://docs.unity3d.com/ScriptReference/CharacterController.html
+        public PlayerType playerInputType;
 
         private Vector3 _speed = Vector3.zero;
+        private InputActions _input;
 
-        public void Start()
+        private void Awake() => _input = new InputActions();
+        private void OnEnable() => _input.Enable();
+        private void OnDisable() => _input.Disable();
+
+        private void Start()
         {
             if (Controller == null)
             {
@@ -26,24 +35,22 @@ namespace Assets.HeroEditor.Common.ExampleScripts
 
             Character.Animator.SetBool("Ready", true);
         }
- 
-        public void Update()
-        {
-            var direction = Vector2.zero;
 
-            if (Input.GetKey(KeyCode.LeftArrow)) direction.x = -1;
-            if (Input.GetKey(KeyCode.RightArrow)) direction.x = 1;
-            if (Input.GetKey(KeyCode.UpArrow)) direction.y = 1;
+        private void Update()
+        {
+            var direction = playerInputType switch
+            {
+                PlayerType.FirstPlayer => _input.FirstPlayer.Move.ReadValue<Vector2>(),
+                PlayerType.SecondPlayer => _input.SecondPlayer.Move.ReadValue<Vector2>(),
+                _ => throw new ArgumentOutOfRangeException(nameof(playerInputType))
+            };
 
             Move(direction);
 
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                Character.SetState(CharacterState.DeathB);
-            }
+            if (Input.GetKeyDown(KeyCode.P)) Character.SetState(CharacterState.DeathB);
         }
 
-        public void Move(Vector2 direction)
+        private void Move(Vector2 direction)
         {
             if (Controller.isGrounded)
             {
@@ -68,7 +75,7 @@ namespace Assets.HeroEditor.Common.ExampleScripts
             Controller.Move(_speed * Time.deltaTime);
         }
 
-        public void Turn(float direction)
+        private void Turn(float direction)
         {
             Character.transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
         }
