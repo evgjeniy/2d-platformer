@@ -1,24 +1,27 @@
 ﻿using Assets.HeroEditor.Common.CharacterScripts;
+using InputScripts;
 using UnityEngine;
 
-namespace CharacterMovement
+namespace Movement.SurfaceMovement
 {
     [RequireComponent(typeof(IInputBehaviour))]
-    public class PhysicsMovement2D : MonoBehaviour
+    public class PhysicsMovement2D : MonoCashed<IInputBehaviour>
     {
         [SerializeField] private Character character;
         [SerializeField] private new Rigidbody2D rigidbody;
         [SerializeField] private SurfaceSlider surfaceSlider;
         [SerializeField] private float speed;
+        [SerializeField] private float jumpForce;
 
-        private IInputBehaviour _input;
         private Vector2 _direction;
-
-        private void Awake() => _input = GetComponent<IInputBehaviour>();
+        private bool _jumpTrigger;
         
         private void Update()
         {
-            _direction = _input.GetMoveDirection();
+            _direction = Vector2.right * First.GetMoveDirection();
+            
+            if (_direction.y > 1.0f && surfaceSlider.IsGrounded)
+                rigidbody.AddForce(Vector2.up * jumpForce);
             
             UpdateCharacterState();
 
@@ -29,7 +32,7 @@ namespace CharacterMovement
         {
             var directionAlonSurface = surfaceSlider.Project(_direction.normalized);
             var offset = directionAlonSurface * (speed * Time.fixedDeltaTime);
-            
+
             rigidbody.MovePosition(rigidbody.position + offset);
         }
         

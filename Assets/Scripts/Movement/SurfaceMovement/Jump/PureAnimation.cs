@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace CharacterMovement.CharacterJump
+namespace Movement.SurfaceMovement.Jump
 {
     public class PureAnimation
     {
@@ -29,11 +29,5 @@ namespace CharacterMovement.CharacterJump
                 yield return null;
             }
         }
-    }
-
-    public class TransformChanges2D
-    {
-        public Vector2 Position { get; set; }
-        public Vector2 Scale { get; set; }
     }
 }

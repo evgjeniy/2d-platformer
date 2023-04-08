@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CharacterMovement.CharacterJump
+namespace Movement.SurfaceMovement.Jump
 {
     public class JumpFX : MonoBehaviour
     {
@@ -14,7 +14,7 @@ namespace CharacterMovement.CharacterJump
 
         public PureAnimation PlayAnimations(Transform jumper, float duration)
         {
-            _playTime.Play(duration, (float progress) =>
+            _playTime.Play(duration, progress =>
             {
                 var position = Vector2.Scale(new Vector2(0.0f, height * yAnimation.Evaluate(progress)), jumper.up);
                 var scale = Vector2.one * scaleAnimation.Evaluate(progress);

@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace CharacterMovement.CharacterJump
+namespace Movement.SurfaceMovement.Jump
 {
-    public class PhysicsJump : MonoTransform
+    public class PhysicsJump : MonoCashed
     {
         [SerializeField] private new Rigidbody2D rigidbody2D;
         [SerializeField] private SurfaceSlider surfaceSlider;

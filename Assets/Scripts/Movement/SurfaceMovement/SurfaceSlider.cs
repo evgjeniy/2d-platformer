@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace CharacterMovement
+namespace Movement.SurfaceMovement
 {
     public class SurfaceSlider : MonoBehaviour
     {
