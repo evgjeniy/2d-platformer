@@ -1,41 +1,31 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoCashed<Camera>
 {
     [SerializeField] private List<Transform> targets;
-    [SerializeField] private Vector3 offset;
+ 
+    [Header("Follow Settings")]
+    [SerializeField] private Vector3 offset = new(0.0f, 1.0f, -10.0f);
     [SerializeField, Range(0.01f, 3.0f)] private float smoothTime = 0.3f;
     
-    [Space]
-    [SerializeField] private float maxDistance = 10.0f;
-    [SerializeField] private float minSize = 5.0f;
-    [SerializeField] private float maxSize = 10.0f;
-    [SerializeField] private float sizePadding = 1.0f;
+    [Header("Zoom Settings")]
+    [SerializeField] private float minCameraSize = 4.0f;
+    [SerializeField] private float maxCameraSize = 10.0f;
+    [SerializeField] private float sizeMultiplier = 0.5f;
 
     private Vector3 _velocity = Vector3.zero;
-
+    
     private void LateUpdate()
     {
         if (targets.Count == 0) return;
-
-        var centerPoint = GetCenterPoint();
-        var distance = GetGreatestDistance();
-
-        if (distance > maxDistance)
-        {
-            var targetSize = Mathf.Clamp(distance + sizePadding, minSize, maxSize);
-            First.orthographicSize = Mathf.Lerp(First.orthographicSize, targetSize, Time.deltaTime * smoothTime);
-
-            var targetPosition = centerPoint + offset;
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
-        }
-        else
-        {
-            var targetPosition = centerPoint + offset;
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
-            First.orthographicSize = Mathf.Lerp(First.orthographicSize, minSize, Time.deltaTime * smoothTime);
-        }
+        
+        var targetSize = Mathf.Clamp(GetGreatestDistance() * sizeMultiplier, minCameraSize, maxCameraSize);
+        First.orthographicSize = Mathf.Lerp(First.orthographicSize, targetSize, Time.fixedDeltaTime * smoothTime);
+        
+        var targetPosition = GetCenterPoint() + offset;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
     }
 
     private Vector3 GetCenterPoint()
