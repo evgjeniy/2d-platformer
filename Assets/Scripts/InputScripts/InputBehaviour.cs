@@ -23,6 +23,13 @@ namespace InputScripts
             _ => throw new ArgumentOutOfRangeException(nameof(PlayerInputType))
         };
 
+        public bool GetAttackState() => PlayerInputType switch
+        {
+            PlayerInputType.FirstPlayer => false, // _input.FirstPlayer.Attack.IsPressed(),
+            PlayerInputType.SecondPlayer => false, // _input.SecondPlayer.Attack.IsPressed(),
+            _ => throw new ArgumentOutOfRangeException(nameof(PlayerInputType))
+        };
+
         private void Awake() => _input = new InputActions();
         private void OnEnable() => _input.Enable();
         private void OnDisable() => _input.Disable();

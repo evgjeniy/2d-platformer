@@ -4,5 +4,6 @@
     {
         float GetMoveDirection();
         bool GetJumpState();
+        bool GetAttackState();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.HeroEditor.Common.CharacterScripts;
+﻿using System;
+using Assets.HeroEditor.Common.CharacterScripts;
 using UnityEngine;
 
 namespace Assets.HeroEditor.Common.ExampleScripts
@@ -10,15 +11,10 @@ namespace Assets.HeroEditor.Common.ExampleScripts
     {
         public Character Character;
         public CharacterController Controller; // https://docs.unity3d.com/ScriptReference/CharacterController.html
-
+        
         private Vector3 _speed = Vector3.zero;
-        private InputActions _input;
 
-        private void Awake() => _input = new InputActions();
-        private void OnEnable() => _input.Enable();
-        private void OnDisable() => _input.Disable();
-
-        private void Start()
+        public void Start()
         {
             if (Controller == null)
             {
@@ -31,17 +27,21 @@ namespace Assets.HeroEditor.Common.ExampleScripts
 
             Character.Animator.SetBool("Ready", true);
         }
-
-        private void Update()
+        
+        public void Update()
         {
-            var direction = _input.SecondPlayer.Move.ReadValue<Vector2>();
+            var direction = Vector2.zero;
+
+            if (Input.GetKey(KeyCode.LeftArrow)) direction.x = -1;
+            if (Input.GetKey(KeyCode.RightArrow)) direction.x = 1;
+            if (Input.GetKey(KeyCode.UpArrow)) direction.y = 1;
 
             Move(direction);
 
             if (Input.GetKeyDown(KeyCode.P)) Character.SetState(CharacterState.DeathB);
         }
 
-        private void Move(Vector2 direction)
+        public void Move(Vector2 direction)
         {
             if (Controller.isGrounded)
             {
@@ -66,7 +66,7 @@ namespace Assets.HeroEditor.Common.ExampleScripts
             Controller.Move(_speed * Time.deltaTime);
         }
 
-        private void Turn(float direction)
+        public void Turn(float direction)
         {
             Character.transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
         }

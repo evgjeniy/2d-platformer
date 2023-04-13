@@ -16,6 +16,10 @@ public class CameraFollow : MonoCashed<Camera>
     [SerializeField] private float sizeMultiplier = 0.5f;
 
     private Vector3 _velocity = Vector3.zero;
+
+    private void AddTarget(Transform newTarget) => targets.Add(newTarget);
+
+    private bool RemoveTarget(Transform target) => targets.Remove(target);
     
     private void LateUpdate()
     {
