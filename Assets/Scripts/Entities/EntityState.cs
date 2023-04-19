@@ -7,7 +7,6 @@ namespace Entities
     public abstract class EntityState : RegisterBehaviour
     {
         [field: SerializeField] public float MaxHealth { get; protected set; } = 100;
-        [field: SerializeField] public bool IsInvulnerable { get; protected set; }
         
         public UnityEvent<float> onHealthChanged;
         
@@ -19,7 +18,7 @@ namespace Entities
             protected set
             {
                 _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
-                onHealthChanged?.Invoke(_currentHealth);
+                onHealthChanged?.Invoke(_currentHealth / MaxHealth);
             }
         }
 
@@ -27,8 +26,6 @@ namespace Entities
 
         public virtual void TakeDamage(float damage)
         {
-            if (IsInvulnerable) return;
-            
             CurrentHealth -= damage;
             if (CurrentHealth == 0.0f) EntityDeath();
         }

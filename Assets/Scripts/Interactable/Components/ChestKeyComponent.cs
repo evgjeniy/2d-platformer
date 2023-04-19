@@ -2,5 +2,5 @@
 
 namespace Interactable.Components
 {
-    public class ChestKeyComponent : InteractableBehaviour<ChestKey> {}
+    public class ChestKeyComponent : MovableInteractableBehaviour<ChestKey> {}
 }

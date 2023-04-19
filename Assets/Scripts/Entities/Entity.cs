@@ -7,6 +7,7 @@ namespace Entities
         [field: SerializeField] public T1 Controller { get; private set; }
         [field: SerializeField] public T2 State { get; private set; }
 
+        private event System.Action OnStartAction;
         private event System.Action OnUpdateAction;
         private event System.Action OnFixedUpdateAction;
         private event System.Action OnEnableAction;
@@ -15,13 +16,14 @@ namespace Entities
         protected override void PostAwake()
         {
             Controller.RegisterEntity(this);
-            Controller.RegisterAll(ref OnUpdateAction, ref OnFixedUpdateAction, 
+            Controller.RegisterAll(ref OnStartAction, ref OnUpdateAction, ref OnFixedUpdateAction, 
                 ref OnEnableAction, ref OnDisableAction);
             
             State.RegisterEntity(this);
-            State.RegisterAll(ref OnUpdateAction, ref OnFixedUpdateAction, 
+            State.RegisterAll(ref OnStartAction, ref OnUpdateAction, ref OnFixedUpdateAction, 
                 ref OnEnableAction, ref OnDisableAction);
 
+            OnStartAction += EntityStart;
             OnUpdateAction += EntityUpdate;
             OnFixedUpdateAction += EntityFixedUpdate;
             OnEnableAction += EntityEnable;
@@ -30,12 +32,14 @@ namespace Entities
             EntityAwake();
         }
 
+        private void Start() => OnStartAction?.Invoke();
         private void Update() => OnUpdateAction?.Invoke();
         private void FixedUpdate() => OnFixedUpdateAction?.Invoke();
         private void OnEnable() => OnEnableAction?.Invoke();
         private void OnDisable() => OnDisableAction?.Invoke();
 
         protected virtual void EntityAwake() {}
+        protected virtual void EntityStart() {}
         protected virtual void EntityUpdate() {}
         protected virtual void EntityFixedUpdate() {}
         protected virtual void EntityEnable() {}

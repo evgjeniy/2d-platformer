@@ -2,5 +2,5 @@
 
 namespace Interactable.Components
 {
-    public class AppleComponent : InteractableBehaviour<Apple> {}
+    public class AppleComponent : MovableInteractableBehaviour<Apple> {}
 }

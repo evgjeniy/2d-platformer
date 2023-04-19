@@ -8,12 +8,14 @@ namespace Interactable
     {
         [SerializeField, Min(0)] private int moneyAmount;
         
-        public void Interact(MonoTransform coin, Collider2D other)
+        public void Interact(MonoCashed<Collider2D> coin, Collider2D other)
         {
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
 
-            Debug.Log(player.name + " collect Coin");
-            coin.gameObject.SetActive(false);
+            coin.First.enabled = false;
+            
+            Debug.Log( $"{player.name} collect Coin ({moneyAmount})"); // TODO - add coin in the wallet
+            coin.PlayCollectableAnimation(onKill: () => Object.Destroy(coin.gameObject));
         }
     }
 }

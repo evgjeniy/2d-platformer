@@ -116,3 +116,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable:
     healValue: 15
+  isMovable: 1

@@ -1,18 +1,19 @@
-﻿using InputScripts;
+﻿using Assets.HeroEditor.Common.CharacterScripts;
 using UnityEngine;
 
 namespace Entities.Player
 {
+    [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(IInputBehaviour))]
     public class PlayerEntity : Entity<PlayerController, PlayerState>
     {
-        [Header("State Changes Listeners")]
-        public CharacterStateEvent onStateChangedEvent;
-
+        [field: SerializeField] public Character Character { get; private set; }
+        
+        public Rigidbody2D Rigidbody { get; private set; }
+        
         public PlayerInventory Inventory { get; private set; } = new();
 
-        protected override void EntityAwake() => onStateChangedEvent ??= new CharacterStateEvent();
+        protected override void EntityAwake() => Rigidbody = GetComponent<Rigidbody2D>();
 
         private void OnDrawGizmosSelected() => Controller.OnDrawGizmosSelected();
     }

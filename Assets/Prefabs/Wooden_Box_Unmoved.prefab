@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2581127131739653578}
   - component: {fileID: 2499626295780592683}
   - component: {fileID: 1159671999277628258}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Wooden_Box_Unmoved
   m_TagString: Untagged
   m_Icon: {fileID: 0}

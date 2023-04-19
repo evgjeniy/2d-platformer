@@ -3,9 +3,9 @@
 namespace Interactable.Components.Base
 {
     [RequireComponent(typeof(Collider2D))]
-    public abstract class InteractableBehaviour<T1> : MonoTransform where T1 : IInteractable, new() 
+    public abstract class InteractableBehaviour<T> : MonoCashed<Collider2D> where T : IInteractable, new() 
     {
-        [SerializeField] protected T1 interactable;
+        [SerializeField] protected T interactable;
         
         protected virtual void OnTriggerEnter2D(Collider2D col) => interactable.Interact(this, col);
     }

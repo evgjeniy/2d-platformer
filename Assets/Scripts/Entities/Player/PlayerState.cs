@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Assets.HeroEditor.Common.CharacterScripts;
+﻿using Assets.HeroEditor.Common.CharacterScripts;
 using UnityEngine;
 
 namespace Entities.Player
@@ -7,19 +6,28 @@ namespace Entities.Player
     [System.Serializable]
     public class PlayerState : EntityState
     {
-        [SerializeField, Min(0.0f)] private float invulnerableTime;
-        [SerializeField, Min(0.0f)] private float clock;
+        [SerializeField] private PlayerDamageAnimation damageAnimation;
 
         private PlayerEntity _playerEntity;
-
-        private SpriteRenderer[] _spriteRenderers;
+        
+        public bool IsInvulnerable { get; private set; }
 
         protected override void Awake<T1, T2>(Entity<T1, T2> entity)
         {
             if ((_playerEntity = entity as PlayerEntity) == null) return;
 
-            _spriteRenderers = _playerEntity.GetComponentsInChildren<SpriteRenderer>();
-            CurrentHealth = MaxHealth;
+            damageAnimation.RegisterContext(_playerEntity);
+        }
+
+        protected override void Start() => CurrentHealth = MaxHealth;
+
+        public void TakeDamageWithForce(Vector3 force, float damage)
+        {
+            if (IsInvulnerable) return;
+
+            base.TakeDamage(damage);
+            _playerEntity.Rigidbody.AddForce(force);
+            damageAnimation.Play(() => IsInvulnerable = true, () => IsInvulnerable = false);
         }
 
         public override void TakeDamage(float damage)
@@ -27,43 +35,14 @@ namespace Entities.Player
             if (IsInvulnerable) return;
             
             base.TakeDamage(damage);
-
-            if (_spriteRenderers != null)
-                _playerEntity.StartCoroutine(InvulnerabilityCoroutine());
+            damageAnimation.Play(() => IsInvulnerable = true, () => IsInvulnerable = false);
         }
 
         protected override void EntityDeath()
         {
-            _playerEntity.onStateChangedEvent?.Invoke(CharacterState.DeathB);
+            _playerEntity.Character.SetState(CharacterState.DeathB);
+            _playerEntity.Rigidbody.bodyType = RigidbodyType2D.Static;
             _playerEntity.enabled = false;
-        }
-
-        private IEnumerator InvulnerabilityCoroutine()
-        {
-            IsInvulnerable = true;
-            
-            for (var i = 0.0f; i < invulnerableTime; i += clock)
-            {
-                foreach (var spriteRenderer in _spriteRenderers)
-                {
-                    var color = spriteRenderer.color;
-                    color.a = 0.2f;
-                    spriteRenderer.color = color;
-                }
-
-                yield return new WaitForSeconds(clock / 2);
-
-                foreach (var spriteRenderer in _spriteRenderers)
-                {
-                    var color = spriteRenderer.color;
-                    color.a = 1.0f;
-                    spriteRenderer.color = color;
-                }
-
-                yield return new WaitForSeconds(clock / 2);
-            }
-
-            IsInvulnerable = false;
         }
     }
 }

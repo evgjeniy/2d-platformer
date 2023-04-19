@@ -2,5 +2,5 @@
 
 namespace Interactable.Components
 {
-    public class CoinComponent : InteractableBehaviour<Coin> {}
+    public class CoinComponent : MovableInteractableBehaviour<Coin> {}
 }
