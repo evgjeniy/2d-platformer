@@ -116,4 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable:
     moneyAmount: 1
-  isMovable: 1
+  moveOffset: {x: 0, y: 0.2}
+  moveDuration: 1
+  durationRandomOffset: 0.3
+  moveEase: 4

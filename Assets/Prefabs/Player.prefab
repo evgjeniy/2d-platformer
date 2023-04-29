@@ -24212,6 +24212,7 @@ GameObject:
   - component: {fileID: 2198510336916685906}
   - component: {fileID: 2198510336916685907}
   - component: {fileID: 2198510336916685905}
+  - component: {fileID: 6662185086817049909}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -24255,7 +24256,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &2198510336916685907
 CapsuleCollider2D:
@@ -24286,7 +24287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Controller>k__BackingField:
-    inputType: 0
     movementComponent:
       moveSpeed: 25
       movementSmoothing: 0.05
@@ -24295,14 +24295,14 @@ MonoBehaviour:
       jumpForce: 500
       groundCheckOverlap:
         root: {fileID: 2198510336916685909}
-        positionOffset: {x: 0, y: 0}
+        positionOffset: {x: 0, y: 0.05}
         zRotationOffset: 0
         searchLayer:
           serializedVersion: 2
-          m_Bits: 64
+          m_Bits: 320
         drawGizmos: 1
         gizmosColor: {r: 1, g: 0, b: 1, a: 1}
-        radius: 0.15
+        radius: 0.25
     attackComponent:
       damage: 10
       animationEvents: {fileID: 2198510337457388917}
@@ -24333,12 +24333,26 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    animationEvents: {fileID: 2198510337457388917}
     damageAnimation:
       ticksAmount: 15
       oneFadeDuration: 0.2
       fadeValue: 0.2
       fadeEase: 4
   <Character>k__BackingField: {fileID: 2198510337471552565}
+--- !u!114 &6662185086817049909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198510336916685934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8170652f104786b1aa1b0e5d957bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8233728684809254207, guid: 2a45b9d61378fd54a85fa22858761df4, type: 3}
 --- !u!1 &2198510336917557598
 GameObject:
   m_ObjectHideFlags: 0

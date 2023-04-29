@@ -9,7 +9,6 @@ namespace Entities.Player
     [System.Serializable]
     public class PlayerController : EntityController
     {
-        [SerializeField] private PlayerInputType inputType;
         [SerializeField] private PlayerMovement movementComponent;
         [SerializeField] private PlayerJump jumpComponent;
         [SerializeField] private PlayerAttack attackComponent;
@@ -19,13 +18,26 @@ namespace Entities.Player
 
         public bool IsGrounded { get; set; }
 
+        public PlayerInputType InputType
+        {
+            get => _input.PlayerInputType;
+            set
+            {
+                _input.AttackAction.performed -= Attack;
+                _input.JumpAction.performed -= jumpComponent.Jump;
+
+                _input.PlayerInputType = value;
+                
+                _input.AttackAction.performed += Attack;
+                _input.JumpAction.performed += jumpComponent.Jump;
+            }
+        }
+
         protected override void Awake<T1, T2>(Entity<T1, T2> entity)
         {
             if ((_playerEntity = entity as PlayerEntity) == null) return;
 
-            _input = new PlayerInput { PlayerInputType = inputType };
-            _input.RegisterAttackAction(Attack);
-            _input.RegisterJumpAction(jumpComponent.Jump);
+            _input = new PlayerInput();
 
             movementComponent.RegisterContext(_playerEntity);
             jumpComponent.RegisterContext(_playerEntity);
@@ -43,7 +55,7 @@ namespace Entities.Player
         {
             IsGrounded = jumpComponent.CheckGrounded();
 
-            var moveDirection = _input.GetMoveDirection();
+            var moveDirection = _input.MoveDirection;
 
             _playerEntity.Character.SetState(IsGrounded
                 ? moveDirection == 0.0f

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7296102246500380966}
   - component: {fileID: 6216882250095487079}
   - component: {fileID: 1774073567835625}
+  - component: {fileID: 1957227820824816884}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -116,4 +117,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable:
     healValue: 15
-  isMovable: 1
+  moveOffset: {x: 0, y: 0.2}
+  moveDuration: 1
+  durationRandomOffset: 0.3
+  moveEase: 4
+--- !u!114 &1957227820824816884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398971603342891488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8170652f104786b1aa1b0e5d957bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4819634890712645188, guid: 173dfd42b201bca4791a61cc1c3654b8, type: 3}
+  deleteOnRespawn: 1

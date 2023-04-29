@@ -1,4 +1,5 @@
 ﻿using Assets.HeroEditor.Common.CharacterScripts;
+using Spawners;
 using UnityEngine;
 
 namespace Entities.Player
@@ -6,6 +7,7 @@ namespace Entities.Player
     [System.Serializable]
     public class PlayerState : EntityState
     {
+        [SerializeField] private AnimationEvents animationEvents;
         [SerializeField] private PlayerDamageAnimation damageAnimation;
 
         private PlayerEntity _playerEntity;
@@ -19,7 +21,11 @@ namespace Entities.Player
             damageAnimation.RegisterContext(_playerEntity);
         }
 
-        protected override void Start() => CurrentHealth = MaxHealth;
+        protected override void Start()
+        {
+            CurrentHealth = MaxHealth;
+            animationEvents.OnCustomEvent += OnPlayerFell;
+        }
 
         public void TakeDamageWithForce(Vector3 force, float damage)
         {
@@ -44,5 +50,14 @@ namespace Entities.Player
             _playerEntity.Rigidbody.bodyType = RigidbodyType2D.Static;
             _playerEntity.enabled = false;
         }
+
+        private void OnPlayerFell(string eventName)
+        {
+            if (eventName != "Fell") return;
+            
+            _playerEntity.GetComponent<ParticleSpawner>()?.Spawn(_playerEntity.transform)?.Play();
+            
+            animationEvents.OnCustomEvent -= OnPlayerFell;
+        } 
     }
 }

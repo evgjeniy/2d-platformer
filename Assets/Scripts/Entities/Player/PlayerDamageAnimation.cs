@@ -31,9 +31,12 @@ namespace Entities.Player
             {
                 var startAlpha = spriteRenderer.color.a;
                 sequence.Insert(0, spriteRenderer.DOFade(fadeValue, oneFadeDuration)
-                    .SetLoops(ticksAmount, LoopType.Restart).SetEase(fadeEase)
-                    .SetLink(spriteRenderer.gameObject)
-                    .OnKill(() => spriteRenderer.DOFade(startAlpha, 0.0f)));
+                    .SetLoops(ticksAmount, LoopType.Restart).SetEase(fadeEase).OnKill(() =>
+                    {
+                        var color = spriteRenderer.color;
+                        color.a = startAlpha;
+                        spriteRenderer.color = color;
+                    }).SetLink(spriteRenderer.gameObject));
             }
         }
     }
