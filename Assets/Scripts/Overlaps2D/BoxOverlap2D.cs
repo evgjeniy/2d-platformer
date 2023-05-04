@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Overlaps2D
 {
@@ -9,7 +10,7 @@ namespace Overlaps2D
         [SerializeField] protected Vector2 boxSize;
 
         public override void Perform() => 
-            Colliders = Physics2D.OverlapBoxAll(OffsetPosition, boxSize, OffsetRotation);
+            Colliders = Physics2D.OverlapBoxAll(OffsetPosition, boxSize, OffsetRotation).ToList();
 
         protected override void DrawCollisionArea() => Gizmos.DrawWireCube(Vector3.zero, boxSize);
     }

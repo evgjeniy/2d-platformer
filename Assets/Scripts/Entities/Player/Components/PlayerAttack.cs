@@ -1,9 +1,9 @@
 ﻿using Assets.HeroEditor.Common.CharacterScripts;
-using Entities.Enemy;
+using Entities.Enemy.EnemyEntities;
 using Overlaps2D;
 using UnityEngine;
 
-namespace Entities.Player
+namespace Entities.Player.Components
 {
     [System.Serializable]
     public class PlayerAttack
@@ -23,10 +23,11 @@ namespace Entities.Player
             attackOverlap.Perform();
             foreach (var hitCollider in attackOverlap.Colliders)
             {
-                if (!hitCollider.TryGetComponent<EnemyEntity>(out var enemy)) continue;
-                
-                enemy.State.TakeDamage(damage);
+                hitCollider.GetComponent<MeleeEnemyEntity>()?.State.TakeDamage(damage);
+                hitCollider.GetComponent<PathEnemyEntity>()?.State.TakeDamage(damage);
+                hitCollider.GetComponent<RangedEnemyEntity>()?.State.TakeDamage(damage);
             }
+            attackOverlap.Colliders.Clear();
         }
 
         public void TryDrawGizmos() => attackOverlap.TryDrawGizmos();

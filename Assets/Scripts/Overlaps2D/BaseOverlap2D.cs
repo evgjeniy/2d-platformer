@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Overlaps2D
 {
@@ -15,10 +16,13 @@ namespace Overlaps2D
         [SerializeField] protected bool drawGizmos = true;
         [SerializeField] protected Color gizmosColor = new() { r = 1.0f, a = 0.5f };
 
-        protected Vector2 OffsetPosition => root == null ? positionOffset : (Vector2)root.position + positionOffset;
+        protected Vector2 OffsetPosition => root == null ? positionOffset : (Vector2)root.position + new Vector2(
+                positionOffset.x * Mathf.Sign(root.localScale.x), 
+                positionOffset.y * Mathf.Sign(root.localScale.y));
+        
         protected float OffsetRotation => root == null ? zRotationOffset : root.eulerAngles.z + zRotationOffset;
         
-        public Collider2D[] Colliders { get; protected set; } = new Collider2D[64];
+        public List<Collider2D> Colliders { get; protected set; } = new (64);
 
         public void ChangeRoot(Transform newRoot) => root = newRoot;
 

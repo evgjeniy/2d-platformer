@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Entities.Player
+namespace Entities.Player.Components
 {
     public class PlayerInventory
     {

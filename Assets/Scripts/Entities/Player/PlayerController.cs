@@ -1,4 +1,5 @@
 ﻿using Assets.HeroEditor.Common.CharacterScripts;
+using Entities.Player.Components;
 using InputScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;

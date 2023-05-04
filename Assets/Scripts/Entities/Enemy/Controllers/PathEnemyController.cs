@@ -1,10 +1,10 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Entities.Enemy
+namespace Entities.Enemy.Controllers
 {
     [System.Serializable]
-    public class PathController : EntityController
+    public class PathEnemyController : EntityController
     {
         [SerializeField] private Waypoint[] waypoints;
         [SerializeField] private LoopType loopType = LoopType.Yoyo;

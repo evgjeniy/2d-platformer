@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Overlaps2D
 {
@@ -9,7 +10,7 @@ namespace Overlaps2D
         [SerializeField] protected float radius;
 
         public override void Perform() => 
-            Colliders = Physics2D.OverlapCircleAll(OffsetPosition, radius, searchLayer);
+            Colliders = Physics2D.OverlapCircleAll(OffsetPosition, radius, searchLayer).ToList();
 
         protected override void DrawCollisionArea() => Gizmos.DrawWireSphere(Vector3.zero, radius);
     }

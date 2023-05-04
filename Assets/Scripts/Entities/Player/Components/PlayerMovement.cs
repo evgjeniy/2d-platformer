@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Utils;
 
-namespace Entities.Player
+namespace Entities.Player.Components
 {
     [System.Serializable]
     public class PlayerMovement
@@ -25,14 +26,7 @@ namespace Entities.Player
             
             _player.Rigidbody.velocity = Vector2.SmoothDamp(velocity, targetVelocity, ref _velocity, movementSmoothing);
             
-            if (move != 0.0f) Flip(move);
-        }
-        
-        private void Flip(float direction)
-        {
-            var scale = _player.transform.localScale;
-            scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction);
-            _player.transform.localScale = scale;
+            if (move != 0.0f) _player.LookAt(move);
         }
     }
 }

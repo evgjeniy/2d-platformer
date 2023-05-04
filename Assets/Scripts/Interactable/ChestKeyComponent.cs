@@ -1,4 +1,5 @@
 ﻿using Entities.Player;
+using Entities.Player.Components;
 using Interactable.Base;
 using Spawners;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Interactable
             if (particleSpawner == null) return;
             
             particleSpawner.Spawn(transform)?.Play();
-            Destroy(particleSpawner);
+            Destroy(particleSpawner); 
         }
     }
     

@@ -3,7 +3,7 @@ using Overlaps2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Entities.Player
+namespace Entities.Player.Components
 {
     [System.Serializable]
     public class PlayerJump
