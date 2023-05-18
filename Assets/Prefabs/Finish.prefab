@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3904750485258056431}
   - component: {fileID: 404519299051604149}
   - component: {fileID: 798083757498040087}
+  - component: {fileID: 4136965205259789596}
   m_Layer: 0
   m_Name: Finish
   m_TagString: Untagged
@@ -117,6 +118,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable:
     sceneName: Level _
+--- !u!114 &4136965205259789596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081413206861809493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47748512b9c346d0b7f86b7be696b552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5153635697506851189
 PrefabInstance:
   m_ObjectHideFlags: 0

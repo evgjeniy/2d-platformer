@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using Entities.Enemy.EnemyEntities;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Entities.Enemy.States
 {
@@ -9,6 +10,7 @@ namespace Entities.Enemy.States
     {
         [Spine.Unity.SpineAnimation]
         [SerializeField] private string deadAnimation;
+        [SerializeField] private UnityEvent<Vector3> preTeleport;
         
         private BossEnemyEntity _boss;
         private float _nextTeleportHealth;
@@ -29,7 +31,9 @@ namespace Entities.Enemy.States
 
             if (CurrentHealth > _nextTeleportHealth) return;
             
-            _nextTeleportHealth = MaxHealth - _healthPointsToNextStage;
+            preTeleport?.Invoke(_boss.position + Vector3.up * 2);
+            
+            _nextTeleportHealth -= _healthPointsToNextStage;
             _boss.Controller.Teleport();
         }
 

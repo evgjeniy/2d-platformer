@@ -4,7 +4,6 @@ using Entities.Player;
 using Interactable.Base;
 using Spawners;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Interactable
 {
@@ -27,10 +26,16 @@ namespace Interactable
             if (finish.First.IsTouching(other)) _enteredEntities.Add(player);
             else _enteredEntities.Remove(player);
 
-            if (_enteredEntities.Count != (PlayerSpawner.IsTwoPlayers ? 2 : 1)) return;
+            if (_enteredEntities.Count == (PlayerSpawner.IsTwoPlayers ? 2 : 1))
+                LoadNextLevel(finish.GetComponent<SceneLoader>());
+        }
+
+        private void LoadNextLevel(SceneLoader sceneLoader)
+        {
+            if (sceneLoader == null) return;
             
-            _enteredEntities.ForEach(entity => entity.DOKill());
-            SceneManager.LoadScene(sceneName);
+            DOTween.KillAll();
+            sceneLoader.LoadSceneNextFrame(sceneName);
         }
     }
 }
