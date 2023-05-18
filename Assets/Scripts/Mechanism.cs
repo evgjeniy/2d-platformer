@@ -10,7 +10,7 @@ public class Mechanism : MonoCashed<Collider2D>
 
     public void Move()
     {
-        transform.DOMove(transform.position + (Vector3)moveOffset, moveDuration)
+        transform.DOMove(position + (Vector3)moveOffset, moveDuration)
             .SetEase(moveEase).SetLink(gameObject).OnKill(() => First.enabled = false);
     }
 }

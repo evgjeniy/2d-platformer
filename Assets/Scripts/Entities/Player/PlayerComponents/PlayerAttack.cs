@@ -1,9 +1,10 @@
-﻿using Assets.HeroEditor.Common.CharacterScripts;
-using Entities.Enemy.EnemyEntities;
+﻿using System.Linq;
+using Assets.HeroEditor.Common.CharacterScripts;
+using Interactable.Base;
 using Overlaps2D;
 using UnityEngine;
 
-namespace Entities.Player.Components
+namespace Entities.Player.PlayerComponents
 {
     [System.Serializable]
     public class PlayerAttack
@@ -11,6 +12,16 @@ namespace Entities.Player.Components
         [SerializeField] private float damage;
         [SerializeField] private AnimationEvents animationEvents;
         [SerializeField] private CircleOverlap2D attackOverlap;
+
+        public float Damage
+        {
+            get => damage;
+            set
+            {
+                damage = value;
+                if (damage < 0.0f) damage = 0.0f;
+            }
+        }
 
         public void Enable() => animationEvents.OnCustomEvent += OnAnimationEvent;
         
@@ -21,12 +32,11 @@ namespace Entities.Player.Components
             if (eventName != "Hit") return;
             
             attackOverlap.Perform();
-            foreach (var hitCollider in attackOverlap.Colliders)
+            foreach (var damageable in attackOverlap.Colliders.Select(col => col.GetComponent<IDamageable>()).Where(damageable => damageable != null))
             {
-                hitCollider.GetComponent<MeleeEnemyEntity>()?.State.TakeDamage(damage);
-                hitCollider.GetComponent<PathEnemyEntity>()?.State.TakeDamage(damage);
-                hitCollider.GetComponent<RangedEnemyEntity>()?.State.TakeDamage(damage);
+                damageable.TakeDamage(damage);
             }
+
             attackOverlap.Colliders.Clear();
         }
 

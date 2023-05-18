@@ -14,4 +14,9 @@ namespace Interactable.Base
     {
         void Interact(MonoCashed<Collider2D> sceneObject, Collider2D other);
     }
+
+    public interface IDamageable
+    {
+        void TakeDamage(float damage);
+    }
 }

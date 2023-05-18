@@ -15,7 +15,7 @@ namespace Interactable.Base
         {
             var duration = Random.Range(moveDuration - durationRandomOffset, moveDuration + durationRandomOffset);
             DOTween.Sequence()
-                .Append(transform.DOMove(transform.position + (Vector3) moveOffset, duration).SetEase(moveEase))
+                .Append(transform.DOMove(position + (Vector3) moveOffset, duration).SetEase(moveEase))
                 .SetLoops(-1, LoopType.Yoyo).SetLink(gameObject).Play();
         }
     }

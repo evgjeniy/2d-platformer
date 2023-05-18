@@ -9,7 +9,7 @@ namespace Interactable
         
         public void Move(Vector3 targetPosition)
         {
-            var deltaDistance = targetPosition - transform.position;
+            var deltaDistance = targetPosition - position;
  
             transform.DOMove(targetPosition, deltaDistance.magnitude / speed)
                 .SetLink(gameObject).SetEase(Ease.OutSine).OnKill(() => Destroy(gameObject));

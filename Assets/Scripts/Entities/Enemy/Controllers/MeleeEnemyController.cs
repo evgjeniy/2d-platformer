@@ -9,33 +9,32 @@ namespace Entities.Enemy.Controllers
     [System.Serializable]
     public class MeleeEnemyController : EntityController
     {
-        [SerializeField, Spine.Unity.SpineAnimation] private string attackAnimation;
-        [SerializeField] private float attackDelay;
+        [Spine.Unity.SpineAnimation]
+        [SerializeField] private string attackAnimation;
+        [SerializeField, Min(0.0f)] private float attackDelay;
         [SerializeField] private float damage;
         [SerializeField] private CircleOverlap2D attackOverlap;
 
-        protected MeleeEnemyEntity EnemyEntity;
+        private MeleeEnemyEntity _enemyEntity;
         private float _attackElapsedTime;
 
-        protected override void Awake<T1, T2>(Entity<T1, T2> entity)
-        {
-            if ((EnemyEntity = entity as MeleeEnemyEntity) == null) return;
-            Debug.Log($"MeleeEnemyController.Awake => EnemyEntity is {EnemyEntity}");
-        }
+        protected override void Awake<T1, T2>(Entity<T1, T2> entity) => _enemyEntity = entity as MeleeEnemyEntity;
 
         protected override void FixedUpdate()
         {
             _attackElapsedTime += Time.fixedDeltaTime;
-            if (_attackElapsedTime < attackDelay) return;
-            _attackElapsedTime = 0.0f;
-            
+
             attackOverlap.Perform();
             foreach (var collider in attackOverlap.Colliders)
             {
                 if (!collider.TryGetComponent<PlayerEntity>(out var player)) continue;
-                
-                EnemyEntity.SkeletonAnimation.AnimationName = attackAnimation;
-                EnemyEntity.LookAt(player.transform);
+
+                _enemyEntity.LookAt(player.transform);
+
+                if (_attackElapsedTime < attackDelay) break;
+                _attackElapsedTime = 0.0f;
+
+                _enemyEntity.SkeletonAnimation.AnimationName = attackAnimation;
             }
         }
 
@@ -43,8 +42,8 @@ namespace Entities.Enemy.Controllers
         {
             foreach (var collider in attackOverlap.Colliders)
                 if (collider.TryGetComponent<PlayerEntity>(out var player))
-                    player.State.TakeDamage(damage);
-            
+                    player.TakeDamage(damage);
+
             attackOverlap.Colliders.Clear();
         }
 

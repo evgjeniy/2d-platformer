@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.HeroEditor.Common.CharacterScripts;
 using Assets.HeroEditor.FantasyInventory.Scripts.Data;
+using InputScripts;
 using UnityEngine;
 
 namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
@@ -20,6 +22,8 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
         /// </summary>
         public bool Expanded;
         public bool SelectOnRefresh = true;
+        public Character Character;
+        public PlayerInputType playerType;
 
         public Action<Item> OnLeftClick;
         public Action<Item> OnRightClick;
@@ -33,6 +37,22 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
         {
             Items = items;
             Refresh(selected);
+
+            TryLoadJson();
+        }
+
+        private void TryLoadJson()
+        {
+            var playerSaveKey = playerType.GetSaveKey();
+            
+            if (PlayerPrefs.HasKey(playerSaveKey))
+                Character.FromJson(PlayerPrefs.GetString(playerSaveKey));
+        }
+
+        public void SaveJson()
+        {
+            PlayerPrefs.SetString(playerType.GetSaveKey(), Character.ToJson());
+            PlayerPrefs.Save();
         }
     }
 }

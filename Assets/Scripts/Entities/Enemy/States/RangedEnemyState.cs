@@ -7,30 +7,26 @@ namespace Entities.Enemy.States
     [System.Serializable]
     public class RangedEnemyState : EntityState
     {
-        [SerializeField] private float deathDelay = 1.0f;
+        [Spine.Unity.SpineAnimation]
+        [SerializeField] private string deadAnimation;
         
         private RangedEnemyEntity _enemy;
 
         protected override void Awake<T1, T2>(Entity<T1, T2> entity)
         {
             if ((_enemy = entity as RangedEnemyEntity) == null) return;
-
             CurrentHealth = MaxHealth;
-        }
- 
-        public override void TakeDamage(float damage)
-        {
-            base.TakeDamage(damage);
-            Debug.Log($"Melee Enemy is damaged: {damage}");
         }
 
         protected override void EntityDeath()
         {
             _enemy.DOKill();
             _enemy.enabled = false;
-            _enemy.SkeletonAnimation.AnimationName = "Dead";
+            _enemy.SkeletonAnimation.AnimationName = deadAnimation;
+
+            var animation = _enemy.SkeletonAnimation.Skeleton.Data.FindAnimation(deadAnimation);
             
-            Object.Destroy(_enemy.gameObject, deathDelay);
+            Object.Destroy(_enemy.gameObject, animation?.Duration ?? 0);
         }
     }
 }

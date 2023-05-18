@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Utils;
 
-namespace Entities.Player.Components
+namespace Entities.Player.PlayerComponents
 {
     [System.Serializable]
     public class PlayerMovement
@@ -11,7 +11,6 @@ namespace Entities.Player.Components
         [SerializeField] private bool isAirControl = true;
 
         private PlayerEntity _player;
-
         private Vector2 _velocity;
 
         public void RegisterContext(PlayerEntity player) => _player = player;
@@ -19,7 +18,7 @@ namespace Entities.Player.Components
         public void Move(float move)
         {
             if (_player == null) return;
-            if (!_player.Controller.IsGrounded && !isAirControl) return;
+            if (_player.Controller.JumpComponent.JumpState == PlayerJump.State.Air && !isAirControl) return;
             
             var velocity = _player.Rigidbody.velocity;
             var targetVelocity = new Vector2(move * moveSpeed * 10.0f, velocity.y);

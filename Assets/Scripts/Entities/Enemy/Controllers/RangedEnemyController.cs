@@ -16,27 +16,24 @@ namespace Entities.Enemy.Controllers
         [SerializeField] private MissileComponent missilePrefab;
         [SerializeField] private CircleOverlap2D attackOverlap;
 
-        protected RangedEnemyEntity EnemyEntity;
+        private RangedEnemyEntity _enemyEntity;
         private float _attackElapsedTime;
 
-        protected override void Awake<T1, T2>(Entity<T1, T2> entity)
-        {
-            if ((EnemyEntity = entity as RangedEnemyEntity) == null) return;
-        }
+        protected override void Awake<T1, T2>(Entity<T1, T2> entity) => _enemyEntity = entity as RangedEnemyEntity;
 
         protected override void FixedUpdate()
         {
             _attackElapsedTime += Time.fixedDeltaTime;
-            if (_attackElapsedTime < attackDelay) return;
-            _attackElapsedTime = 0.0f;
-            
+
             attackOverlap.Perform();
             foreach (var collider in attackOverlap.Colliders)
             {
                 if (!collider.TryGetComponent<PlayerEntity>(out var player)) continue;
+                _enemyEntity.LookAt(player.transform);
 
-                EnemyEntity.SkeletonAnimation.AnimationName = attackAnimation;
-                EnemyEntity.LookAt(player.transform);
+                if (_attackElapsedTime < attackDelay) return;
+                _attackElapsedTime = 0.0f;
+                _enemyEntity.SkeletonAnimation.AnimationName = attackAnimation;
             }
         }
 
@@ -45,9 +42,10 @@ namespace Entities.Enemy.Controllers
             foreach (var collider in attackOverlap.Colliders)
             {
                 if (!collider.TryGetComponent<PlayerEntity>(out var player)) continue;
-                
-                var missile = Object.Instantiate(missilePrefab, EnemyEntity.transform.position + Vector3.up, Quaternion.identity);
-                missile.Move(player.transform.position);
+
+                var spawnPosition = _enemyEntity.position + Vector3.up;
+                var missile = Object.Instantiate(missilePrefab, spawnPosition, Quaternion.identity);
+                missile.Move(player.position);
             }
 
             attackOverlap.Colliders.Clear();

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using Assets.HeroEditor.Common.CommonScripts;
+using Buffs;
 using DG.Tweening;
 using Entities.Player;
 using Interactable.Base;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Interactable
 {
@@ -20,16 +22,15 @@ namespace Interactable
     [System.Serializable]
     public class Bonus : IInteractable
     {
-        [SerializeField] private List<string> boosters; // temp -> List<Boost>
+        [SerializeField] private List<BuffData> buffs;
         
         public void Interact(MonoCashed<Collider2D> bonus, Collider2D other)
         {
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
             
             bonus.First.enabled = false;
+            player.State.AddBuff(buffs.Random().GetBuff(player));
             
-            Debug.Log($"{player.name} collect bonus: {boosters.Random()}"); // TODO - add bonus to the player
-
             PlayInteractionAnimation(bonus.transform);
         }
 

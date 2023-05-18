@@ -20,7 +20,7 @@ namespace Interactable.Base
             collectable.GetComponent<SpriteRenderer>()?.DOFade(0.0f, fadeOffDuration)
                 .SetEase(fadeOffEase).SetLink(collectable.gameObject);
             
-            collectable.transform.DOMoveY(collectable.transform.position.y + yMoveOffset, yMoveDuration)
+            collectable.transform.DOMoveY(collectable.position.y + yMoveOffset, yMoveDuration)
                 .SetEase(yMoveEase).SetLink(collectable.gameObject)
                 .OnPlay(() => onPlay?.Invoke())
                 .OnKill(() => onKill?.Invoke());

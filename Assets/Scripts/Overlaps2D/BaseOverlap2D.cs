@@ -16,6 +16,8 @@ namespace Overlaps2D
         [SerializeField] protected bool drawGizmos = true;
         [SerializeField] protected Color gizmosColor = new() { r = 1.0f, a = 0.5f };
 
+        public LayerMask SearchLayer => searchLayer;
+
         protected Vector2 OffsetPosition => root == null ? positionOffset : (Vector2)root.position + new Vector2(
                 positionOffset.x * Mathf.Sign(root.localScale.x), 
                 positionOffset.y * Mathf.Sign(root.localScale.y));

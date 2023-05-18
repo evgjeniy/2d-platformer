@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Entities.Player;
 using Interactable.Base;
+using Spawners;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

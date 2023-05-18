@@ -17,7 +17,7 @@ namespace Interactable
         {
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
             
-            var scaleValue = lever.transform.localScale.x;
+            var scaleValue = lever.localScale.x;
             
             lever.transform
                 .DOScaleX( Mathf.Abs(scaleValue) * -Mathf.Sign(scaleValue), 0.1f)

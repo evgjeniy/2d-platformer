@@ -19,7 +19,7 @@ namespace Interactable
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
 
             pushButton.transform
-                .DOMoveY(pushButton.transform.position.y - undergroundDistance, 0.3f)
+                .DOMoveY(pushButton.position.y - undergroundDistance, 0.3f)
                 .SetLink(pushButton.gameObject).OnPlay(() =>
                 {
                     pushButton.First.enabled = false;

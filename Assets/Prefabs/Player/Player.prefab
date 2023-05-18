@@ -24252,7 +24252,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -24287,24 +24287,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Controller>k__BackingField:
-    movementComponent:
+    <MovementComponent>k__BackingField:
       moveSpeed: 25
       movementSmoothing: 0.05
       isAirControl: 1
-    jumpComponent:
-      jumpForce: 500
+    <JumpComponent>k__BackingField:
+      jumpForce: 440
       groundCheckOverlap:
         root: {fileID: 2198510336916685909}
         positionOffset: {x: 0, y: 0.05}
         zRotationOffset: 0
         searchLayer:
           serializedVersion: 2
-          m_Bits: 320
+          m_Bits: 832
         drawGizmos: 1
         gizmosColor: {r: 1, g: 0, b: 1, a: 1}
-        radius: 0.25
-    attackComponent:
-      damage: 30
+        radius: 0.2
+      ladderSpeed: 10
+      ladderLayer:
+        serializedVersion: 2
+        m_Bits: 512
+    <AttackComponent>k__BackingField:
+      damage: 25
       animationEvents: {fileID: 2198510337457388917}
       attackOverlap:
         root: {fileID: 4987697270638331187}
@@ -24312,7 +24316,7 @@ MonoBehaviour:
         zRotationOffset: 0
         searchLayer:
           serializedVersion: 2
-          m_Bits: 128
+          m_Bits: 1152
         drawGizmos: 1
         gizmosColor: {r: 1, g: 0, b: 0, a: 1}
         radius: 0.4
@@ -24333,6 +24337,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    onDamaged:
+      m_PersistentCalls:
+        m_Calls: []
+    onHealed:
+      m_PersistentCalls:
+        m_Calls: []
     animationEvents: {fileID: 2198510337457388917}
     damageAnimation:
       ticksAmount: 15
@@ -24353,6 +24363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8233728684809254207, guid: 2a45b9d61378fd54a85fa22858761df4, type: 3}
+  positionOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &2198510336917557598
 GameObject:
   m_ObjectHideFlags: 0

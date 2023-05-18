@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 11 Boss.unity
     guid: e0dc881af09443d41824e1075ccc53ec
+  - enabled: 1
+    path: Assets/Scenes/Shop Scene.unity
+    guid: 22293c69847866f449c960db4f777e6a
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3054b90580c471049a756749940539c8, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 641c576b7432fa0498461e28a50b1979, type: 2}

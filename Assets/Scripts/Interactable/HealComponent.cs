@@ -16,13 +16,12 @@ namespace Interactable
         public void Interact(MonoCashed<Collider2D> apple, Collider2D other)
         {
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
-            if (player.State.CurrentHealth == player.State.MaxHealth) return; 
+            if (!player.State.Heal(healValue)) return; 
 
             PlayCollectAnimation(apple, onKill: () => Object.Destroy(apple.gameObject), onPlay: () =>
             {
-                player.State.Heal(healValue);
                 apple.First.enabled = false;
-                apple.GetComponent<ParticleSpawner>()?.Spawn(apple.transform.position + Vector3.up)?.Play();
+                apple.GetComponent<ParticleSpawner>()?.Spawn(apple.position + Vector3.up)?.Play();
             });
         }
     }

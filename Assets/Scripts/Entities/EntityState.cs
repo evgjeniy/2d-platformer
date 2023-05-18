@@ -9,6 +9,8 @@ namespace Entities
         [field: SerializeField] public float MaxHealth { get; protected set; } = 100;
         
         public UnityEvent<float> onHealthChanged;
+        public UnityEvent<float> onDamaged;
+        public UnityEvent<float> onHealed;
         
         private float _currentHealth;
 
@@ -22,11 +24,20 @@ namespace Entities
             }
         }
 
-        public virtual void Heal(float healAmount) => CurrentHealth += healAmount;
+        public virtual bool Heal(float healAmount)
+        {
+            if (CurrentHealth == MaxHealth) return false;
+            
+            CurrentHealth += healAmount;
+            onHealed?.Invoke(CurrentHealth / MaxHealth);
+
+            return true;
+        }
 
         public virtual void TakeDamage(float damage)
         {
             CurrentHealth -= damage;
+            onDamaged?.Invoke(CurrentHealth / MaxHealth);
             if (CurrentHealth == 0.0f) EntityDeath();
         }
         

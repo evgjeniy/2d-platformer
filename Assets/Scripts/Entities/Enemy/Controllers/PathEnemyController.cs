@@ -14,11 +14,9 @@ namespace Entities.Enemy.Controllers
             var sequence = DOTween.Sequence().SetLoops(-1, loopType).SetLink(entity.gameObject);
             
             foreach (var waypoint in waypoints) 
-                sequence.Append(
-                    entity.transform
-                        .DOMove(waypoint.transform.position, waypoint.duration)
-                        .SetEase(waypoint.ease)
-                );
+                sequence.Append(entity.transform
+                    .DOMove(waypoint.transform.position, waypoint.duration)
+                    .SetEase(waypoint.ease));
         }
     }
 

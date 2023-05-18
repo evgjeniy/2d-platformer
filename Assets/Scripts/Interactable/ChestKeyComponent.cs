@@ -1,5 +1,5 @@
 ﻿using Entities.Player;
-using Entities.Player.Components;
+using Entities.Player.PlayerComponents;
 using Interactable.Base;
 using Spawners;
 using UnityEngine;

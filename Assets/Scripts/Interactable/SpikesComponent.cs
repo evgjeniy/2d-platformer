@@ -17,7 +17,7 @@ namespace Interactable
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
             if (player.State.IsInvulnerable) return;
             
-            var knockBackDirection = (player.transform.position - spikes.transform.position).normalized;
+            var knockBackDirection = (player.position - spikes.position).normalized;
             player.State.TakeDamageWithForce(knockForce * knockBackDirection, damage);
         }
     }

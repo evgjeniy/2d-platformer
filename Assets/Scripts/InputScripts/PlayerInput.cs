@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace InputScripts
@@ -9,17 +10,10 @@ namespace InputScripts
 
         private readonly InputActions _input;
         
-        public float MoveDirection => PlayerInputType switch
+        public Vector2 MoveDirection => PlayerInputType switch
         {
-            PlayerInputType.FirstPlayer => _input.FirstPlayer.Move.ReadValue<float>(),
-            PlayerInputType.SecondPlayer => _input.SecondPlayer.Move.ReadValue<float>(),
-            _ => throw new ArgumentOutOfRangeException(nameof(PlayerInputType))
-        };
-
-        public InputAction JumpAction => PlayerInputType switch
-        {
-            PlayerInputType.FirstPlayer => _input.FirstPlayer.Jump,
-            PlayerInputType.SecondPlayer => _input.SecondPlayer.Jump,
+            PlayerInputType.FirstPlayer => _input.FirstPlayer.Move.ReadValue<Vector2>(),
+            PlayerInputType.SecondPlayer => _input.SecondPlayer.Move.ReadValue<Vector2>(),
             _ => throw new ArgumentOutOfRangeException(nameof(PlayerInputType))
         };
 

@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Entities.Player.Components
+namespace Entities.Player.PlayerComponents
 {
     [System.Serializable]
     public class PlayerDamageAnimation

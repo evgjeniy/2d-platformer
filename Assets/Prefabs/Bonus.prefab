@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3243566151141331333}
   - component: {fileID: 2003301863}
   - component: {fileID: 2003301862}
+  - component: {fileID: 1643473731}
+  - component: {fileID: 1643473730}
   m_Layer: 6
   m_Name: Bonus
   m_TagString: Untagged
@@ -125,6 +127,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable:
-    boosters:
-    - +50% damage
-    - +50% damage resistance
+    buffs:
+    - buffType: 0
+      buffTime: 15
+      buffValue: 0.5
+      particleSpawner: {fileID: 1643473731}
+    - buffType: 1
+      buffTime: 15
+      buffValue: 0.5
+      particleSpawner: {fileID: 1643473730}
+--- !u!114 &1643473731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873052269965931943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8170652f104786b1aa1b0e5d957bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3806809096994453990, guid: f9ded1aa4da9cd446a8c2af7908b129d, type: 3}
+  positionOffset: {x: 0, y: -0.1, z: 0}
+--- !u!114 &1643473730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873052269965931943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8170652f104786b1aa1b0e5d957bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3010921176916371870, guid: 0ec3b2cee96e0ca4191cf649326c9993, type: 3}
+  positionOffset: {x: 0, y: 0.65, z: 0}

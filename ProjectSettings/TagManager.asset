@@ -14,8 +14,8 @@ TagManager:
   - Ground
   - Enemy
   - Bubble
-  - 
-  - 
+  - Ladder
+  - Barrel
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemy
+    uniqueID: 1193180513
+    locked: 0
+  - name: Effects
+    uniqueID: 2762967931
     locked: 0

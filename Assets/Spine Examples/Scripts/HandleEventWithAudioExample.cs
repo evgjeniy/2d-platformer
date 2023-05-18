@@ -45,7 +45,7 @@ namespace Spine.Unity.Examples {
 		public float randomPitchOffset = 0.1f;
 
 		[Space]
-		public bool logDebugMessage = false;
+		public bool logDebugMessage;
 
 		Spine.EventData eventData;
 
@@ -70,14 +70,19 @@ namespace Spine.Unity.Examples {
 			bool eventMatch = (eventData == e.Data); // Performance recommendation: Match cached reference instead of string.
 			if (eventMatch) {
 				Play();
+				OnEventInvoked();
 			}
 		}
 
 		public void Play () {
+			if (audioSource == null) return;
+			
 			audioSource.pitch = basePitch + Random.Range(-randomPitchOffset, randomPitchOffset);
 			audioSource.clip = audioClip;
 			audioSource.Play();
 		}
+
+		protected virtual void OnEventInvoked() {}
 	}
 
 }

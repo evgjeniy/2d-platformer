@@ -100,6 +100,8 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
                 {
                     _clickTime = Time.time;
                 }
+
+                Container.SaveJson();
             }
             else if (button == PointerEventData.InputButton.Right)
             {

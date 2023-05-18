@@ -3,6 +3,25 @@
 public abstract class MonoTransform : MonoBehaviour
 {
     public new Transform transform { get; private set; }
+    
+    public Vector3 position
+    {
+        get => transform.position;
+        set => transform.position = value;
+    }
+
+    public Quaternion rotation
+    {
+        get => transform.rotation;
+        set => transform.rotation = value;
+    }
+
+    public Vector3 localScale
+    {
+        get => transform.localScale;
+        set => transform.localScale = value;
+    }
+
     protected virtual void Awake() { transform = base.transform; PostAwake(); }
     protected virtual void PostAwake() {}
 }

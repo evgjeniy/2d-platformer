@@ -1,5 +1,5 @@
 ﻿using Assets.HeroEditor.Common.CharacterScripts;
-using Entities.Player.Components;
+using Entities.Player.PlayerComponents;
 using UnityEngine;
 
 namespace Entities.Player

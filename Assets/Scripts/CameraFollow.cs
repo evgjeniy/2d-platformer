@@ -29,7 +29,7 @@ public class CameraFollow : MonoCashed<Camera>
         First.orthographicSize = Mathf.Lerp(First.orthographicSize, targetSize, Time.fixedDeltaTime * smoothTime);
         
         var targetPosition = GetCenterPoint() + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
+        position = Vector3.SmoothDamp(position, targetPosition, ref _velocity, smoothTime);
     }
 
     private Vector3 GetCenterPoint()

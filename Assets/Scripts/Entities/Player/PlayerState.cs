@@ -1,5 +1,8 @@
-﻿using Assets.HeroEditor.Common.CharacterScripts;
-using Entities.Player.Components;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Assets.HeroEditor.Common.CharacterScripts;
+using Buffs;
+using Entities.Player.PlayerComponents;
 using Spawners;
 using UnityEngine;
 
@@ -12,6 +15,8 @@ namespace Entities.Player
         [SerializeField] private PlayerDamageAnimation damageAnimation;
 
         private PlayerEntity _playerEntity;
+        private List<Buff> _buffs = new();
+        public List<float> DamageResistanceMultipliers { get; private set; } = new();
         
         public bool IsInvulnerable { get; private set; }
 
@@ -28,20 +33,29 @@ namespace Entities.Player
             animationEvents.OnCustomEvent += OnPlayerFell;
         }
 
+        public void AddBuff(Buff buff) => _buffs.Add(buff);
+
+        public void RemoveBuff(Buff buff) => _buffs.Remove(buff);
+
+        protected override void Update()
+        {
+            for (int i = 0; i < _buffs.Count; i++) 
+                _buffs[i].UpdateTime(Time.deltaTime);
+        }
+
         public void TakeDamageWithForce(Vector3 force, float damage)
         {
             if (IsInvulnerable) return;
 
-            base.TakeDamage(damage);
             _playerEntity.Rigidbody.AddForce(force);
-            damageAnimation.Play(() => IsInvulnerable = true, () => IsInvulnerable = false);
+            TakeDamage(damage);
         }
 
         public override void TakeDamage(float damage)
         {
             if (IsInvulnerable) return;
-            
-            base.TakeDamage(damage);
+
+            base.TakeDamage(damage / (1 + DamageResistanceMultipliers.Sum()));
             damageAnimation.Play(() => IsInvulnerable = true, () => IsInvulnerable = false);
         }
 
