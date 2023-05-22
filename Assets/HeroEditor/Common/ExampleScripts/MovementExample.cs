@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.HeroEditor.Common.CharacterScripts;
+﻿using Assets.HeroEditor.Common.CharacterScripts;
 using UnityEngine;
 
 namespace Assets.HeroEditor.Common.ExampleScripts

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.HeroEditor.Common.CommonScripts;
 using Assets.HeroEditor.FantasyInventory.Scripts.Data;
 using Assets.HeroEditor.FantasyInventory.Scripts.Enums;
 using HeroEditor.Common;

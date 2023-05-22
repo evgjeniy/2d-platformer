@@ -5,6 +5,7 @@ using Buffs;
 using Entities.Player.PlayerComponents;
 using Spawners;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Entities.Player
 {

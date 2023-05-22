@@ -11,6 +11,7 @@ using HeroEditor.Common;
 using HeroEditor.Common.Enums;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -27,6 +28,10 @@ namespace Assets.HeroEditor.Common.EditorScripts
         public Text ItemName;
 
         [Header("Other")]
+        public MoneyCollector Wallet;
+        public SaveCharacterSkins SaveCharacterSkins;
+        public UnityEvent<bool> OnItemBought;
+        
         public List<string> PaintParts;
         public Button PaintButton;
         public ColorPicker ColorPicker;
@@ -70,8 +75,6 @@ namespace Assets.HeroEditor.Common.EditorScripts
 
         public void Refresh(int defaultIndex = 0)
         {
-            Item.GetParams = null;
-
             Dictionary<string, SpriteGroupEntry> dict;
             Action<Item> equipAction;
             int equippedIndex;
@@ -115,7 +118,6 @@ namespace Assets.HeroEditor.Common.EditorScripts
                     dict = spriteCollection.Armor.ToDictionary(i => i.FullName, i => i);
                     equipAction = item => Character.Equip(dict[item.Id], tab.name.ToEnum<EquipmentPart>());
                     equippedIndex = Character.Armor == null ? -1 : spriteCollection.Armor.FindIndex(i => i.Sprites.Contains(Character.Armor.SingleOrDefault(j => j.name == part)));
-                    Item.GetParams = item => new ItemParams { Id = item.Id, Path = dict[item.Id] == null ? null : dict[item.Id].Path.Replace("Armor/", $"{tab.name}/") + $".{tab.name}", Meta = dict[item.Id] == null ? null : JsonConvert.SerializeObject(dict[item.Id].Tags) };
                     break;
                 }
                 case "Shield":
@@ -283,11 +285,22 @@ namespace Assets.HeroEditor.Common.EditorScripts
 
             items.Insert(0, new Item("Empty"));
             dict.Add("Empty", null);
-
-            if (Item.GetParams == null)
+            
+            items.ForEach(i => i.GetParams = item =>
             {
-                Item.GetParams = item => new ItemParams { Id = item.Id, Path = dict[item.Id]?.Path, Meta = dict[item.Id] == null ? null : JsonConvert.SerializeObject(dict[item.Id].Tags) }; // We override GetParams method because we don't have a database with item params.
-            }
+                var path = tab.name is "Pauldrons" or "Vest" or "Gloves" or "Belt" or "Boots"
+                    ? dict[item.Id] == null ? null : dict[item.Id].Path.Replace("Armor/", $"{tab.name}/") + $".{tab.name}"
+                    : dict[item.Id] == null ? null : dict[item.Id].Path;
+                var isBought = SaveCharacterSkins.Contains(path) || item.Id == "Empty";
+
+                return new ItemParams
+                {
+                    Id = item.Id,
+                    Path = path,
+                    Price = isBought ? 0 : 100,
+                    Meta = dict[item.Id] == null ? null : JsonConvert.SerializeObject(dict[item.Id].Tags)
+                };
+            });
 
             IconCollection.Active = IconCollection.Instances[Character.SpriteCollection.Id];
 
@@ -295,10 +308,16 @@ namespace Assets.HeroEditor.Common.EditorScripts
 
             Inventory.OnLeftClick = item =>
             {
+                ItemName.text = item.Params.Id ?? "Empty";
+                
+                if (item.Params.Price != 0 && !TryBuyItem(item)) return;
+                SaveCharacterSkins.Add(item.Params.Path);
+                
                 equipAction(item);
                 EquipCallback?.Invoke(item);
-                ItemName.text = item.Params.Id ?? "Empty";
                 SetPaintButton(tab.name, item);
+                
+                OnItemBought?.Invoke(true);
             };
 
             var equipped = items.Count > equippedIndex + 1 ? items[equippedIndex + 1] : null;
@@ -306,6 +325,15 @@ namespace Assets.HeroEditor.Common.EditorScripts
             Inventory.Initialize(ref items, equipped, reset: true);
             Inventory.ScrollRect.verticalNormalizedPosition = 1;
             SetPaintButton(tab.name, equipped);
+        }
+
+        private bool TryBuyItem(Item item)
+        {
+            var moneyAfterBought = Wallet.CoinsAmount - item.Params.Price;
+            if (moneyAfterBought < 0) return false;
+
+            Wallet.CoinsAmount = moneyAfterBought;
+            return true;
         }
 
         private void SetPaintButton(string tab, Item item)

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 84362475760924866}
   - component: {fileID: 6356415903428550852}
   - component: {fileID: 6922686929757204718}
+  - component: {fileID: 8301792428447769157}
+  - component: {fileID: 4003625739054382852}
   m_Layer: 0
   m_Name: Chest_Locked
   m_TagString: Untagged
@@ -115,4 +117,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable:
-    gemsAmount: 10
+    fadeOffDuration: 0.3
+    fadeOffEase: 17
+    yMoveOffset: 1.5
+    yMoveDuration: 0.5
+    yMoveEase: 18
+    coinsAmount: 500
+    openChestSprite: {fileID: 21300000, guid: f6eb9831d71dcb347b21e79de767eaa1, type: 3}
+    collectParticle: {fileID: 4003625739054382852}
+--- !u!114 &8301792428447769157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955986550067857931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336f09eabf6d4c19bf6b4a9b6d8af852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCoinsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onCoinsChangedString:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4003625739054382852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955986550067857931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8170652f104786b1aa1b0e5d957bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5948175621360784009, guid: 4b1bb3702bbf1a04eb5957370ce2983a, type: 3}
+  positionOffset: {x: 0, y: 0.5, z: 0}

@@ -10,17 +10,19 @@ namespace Interactable
     public class Coin : CollectableBehaviour, IInteractable
     {
         [Header("Coin Settings")]
-        [SerializeField, Min(0)] private int moneyAmount;
+        [SerializeField, Min(0)] private int coinsAmount;
 
         public void Interact(MonoCashed<Collider2D> coin, Collider2D other)
         {
-            if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
+            if (!other.TryGetComponent<PlayerEntity>(out _)) return;
 
             coin.First.enabled = false;
-            
-            PlayCollectAnimation(coin,
-                onPlay: () => Debug.Log($"{player.name} collect Coin ({moneyAmount})"), // TODO - add coin in the wallet
-                onKill: () => Object.Destroy(coin.gameObject));
+
+            PlayCollectAnimation(coin, onKill: () =>
+            {
+                coin.GetComponent<MoneyCollector>()?.Collect(coinsAmount);
+                Object.Destroy(coin.gameObject);
+            });
         }
     }
 }

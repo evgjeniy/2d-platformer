@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Assets.HeroEditor.Common.CharacterScripts;
 using Assets.HeroEditor.Common.CharacterScripts.Firearms.Enums;
 using UnityEngine;
 

@@ -8,6 +8,9 @@ public class MainMenu : SceneLoader
     public void PlayGame(bool isTwoPlayers)
     {
         PlayerSpawner.IsTwoPlayers = isTwoPlayers;
-        LoadScene(firstLevelName);
+
+        LoadScene(PlayerPrefs.HasKey(LAST_LEVEL_SCENE_SAVE_KEY)
+            ? PlayerPrefs.GetString(LAST_LEVEL_SCENE_SAVE_KEY)
+            : firstLevelName);
     }
 }

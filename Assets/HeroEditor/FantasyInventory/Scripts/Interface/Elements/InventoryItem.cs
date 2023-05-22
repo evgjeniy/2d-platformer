@@ -17,6 +17,8 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
     {
         public Image Icon;
         public Image Background;
+        public Image NotBoughtIcon;
+        public Text Price;
         public Text Count;
         public GameObject Modificator;
         public Item Item;
@@ -41,6 +43,9 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
                 var collection = IconCollection.Active ?? IconCollection.Instances.First().Value;
 
                 Icon.sprite = collection.GetIcon(Item.Params.Path);
+
+                NotBoughtIcon.SetActive(Item.Params.Price != 0);
+                Price.text = $"{Item.Params.Price}";
             }
 
             if (Toggle)
@@ -88,6 +93,9 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
             if (button == PointerEventData.InputButton.Left)
             {
                 Container.OnLeftClick?.Invoke(Item);
+                
+                if (NotBoughtIcon != null) 
+                    NotBoughtIcon.SetActive(Item.Params.Price != 0);
 
                 var delta = Mathf.Abs(Time.time - _clickTime);
 

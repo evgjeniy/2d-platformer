@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using HeroEditor.Common;
-using UnityEngine;
-
-namespace Assets.HeroEditor.FantasyInventory.Scripts
+﻿namespace Assets.HeroEditor.FantasyInventory.Scripts
 {
     public static class Extensions
     {

@@ -1,5 +1,7 @@
 ﻿using Entities.Player;
 using Interactable.Base;
+using Interactable.InteractableAnimations;
+using Spawners;
 using UnityEngine;
 
 namespace Interactable
@@ -10,7 +12,9 @@ namespace Interactable
     public class Chest : CollectableBehaviour, IInteractable
     {
         [Header("Chest Settings")]
-        [SerializeField] private int gemsAmount;
+        [SerializeField] private int coinsAmount = 500;
+        [SerializeField] private Sprite openChestSprite;
+        [SerializeField] private ParticleSpawner collectParticle;
         
         public void Interact(MonoCashed<Collider2D> chest, Collider2D other)
         {
@@ -19,14 +23,15 @@ namespace Interactable
             var keyGameObject = player.Inventory.Find<ChestKey>();
             if (keyGameObject == null || keyGameObject.Chest != chest) return;
             
-            PlayCollectAnimation(chest, onPlay: () => player.Inventory.Remove(keyGameObject), onKill: () =>
+            chest.PlayBounceJumpAnimation(0.5f, onPlay: () =>
             {
+                player.Inventory.Remove(keyGameObject);
+                chest.GetComponent<MoneyCollector>()?.Collect(coinsAmount);
                 chest.First.enabled = false;
                 
-                // TODO - add gems to wallet
-                Debug.Log($"Player Collect {gemsAmount} Gems!");
-                
-                Object.Destroy(chest.gameObject);
+                if (collectParticle != null) collectParticle.Spawn(chest.position)?.Play();
+                if (openChestSprite != null && chest.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
+                    spriteRenderer.sprite = openChestSprite;
             });
         }
     }

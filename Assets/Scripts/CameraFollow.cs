@@ -17,9 +17,11 @@ public class CameraFollow : MonoCashed<Camera>
 
     private Vector3 _velocity = Vector3.zero;
 
-    public void AddTarget(Transform newTarget) => targets.Add(newTarget);
+    public List<Transform> Targets => targets;
 
-    private bool RemoveTarget(Transform target) => targets.Remove(target);
+    public void AddTarget(Transform target) => targets.Add(target);
+
+    public bool RemoveTarget(Transform target) => targets.Remove(target);
     
     private void LateUpdate()
     {

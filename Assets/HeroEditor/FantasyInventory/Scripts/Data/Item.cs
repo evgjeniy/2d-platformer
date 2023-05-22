@@ -19,7 +19,8 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Data
         /// <summary>
         /// This function may be overridden by the game. For example, the game may vary item params depending on Modificator.
         /// </summary>
-        public static Func<Item, ItemParams> GetParams = item =>
+        [JsonIgnore]
+        public Func<Item, ItemParams> GetParams = item =>
         {
             if (ItemCollection.Instance == null) throw new ArgumentNullException(nameof(ItemCollection.Instance));
 

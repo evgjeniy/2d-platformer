@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Assets.HeroEditor.Common.CharacterScripts;
-using Assets.HeroEditor.Common.EditorScripts;
 using Assets.HeroEditor.Common.CharacterScripts.Firearms;
 using HeroEditor.Common.Enums;
 using UnityEngine;
