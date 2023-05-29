@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
 public class MoneyCollector : MonoTransform
 {
-    private const string CoinsSaveKey = nameof(CoinsSaveKey);
-
     public UnityEvent<int> onCoinsChanged;
     public UnityEvent<string> onCoinsChangedString;
 
     public int CoinsAmount
     {
-        get => PlayerPrefs.GetInt(CoinsSaveKey, 0);
+        get => PlayerPrefs.GetInt(StringConstants.CoinsSaveKey, 0);
         set
         {
             if (value < 0) return;
-            PlayerPrefs.SetInt(CoinsSaveKey, value);
+            PlayerPrefs.SetInt(StringConstants.CoinsSaveKey, value);
             
             SendCoinsChanged();
         }

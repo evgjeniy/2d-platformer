@@ -24,16 +24,13 @@ namespace Interactable
                 _players.Remove(player);
         }
 
-        public void TakeDamage(float ignored)
+        public void TakeDamage(float ignored) => _players.GetNearestPlayer(transform).IfNotNull(nearest =>
         {
-            var nearestPlayer = _players.GetNearestPlayer(transform);
-            if (nearestPlayer == null) return;
-            
-            var xDirection = Mathf.Sign(position.x - nearestPlayer.position.x);
+            var xDirection = Mathf.Sign(position.x - nearest.position.x);
             First.bodyType = RigidbodyType2D.Dynamic;
             First.AddForce(new Vector2(xDirection, Random.Range(0.0f, 1.0f)) * 100.0f);
-            
-            Destroy(gameObject, 1.0f);
-        }
+
+            gameObject.Destroy(1.0f);
+        });
     }
 }

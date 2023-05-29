@@ -1,24 +1,22 @@
 ﻿using Entities.Player;
 using UnityEngine;
+using Utils;
 
 namespace Buffs
 {
     public class AttackBuff : Buff
     {
-        private readonly ParticleSystem _particleInstance;
+        private ParticleSystem _particleInstance;
         
         public AttackBuff(PlayerEntity player, BuffData buffData) : base(player, buffData)
         {
             Player.Controller.AttackComponent.Damage *= 1 + BuffData.buffValue;
-            
-            if (buffData.particleSpawner != null) 
-                _particleInstance = BuffData.particleSpawner.Spawn(player.transform);
+            BuffData.particleSpawner.IfNotNull(spawner => _particleInstance = spawner.Spawn(player.transform));
         }
 
         protected override void DeBuff()
         {
-            if (_particleInstance != null) Object.Destroy(_particleInstance.gameObject);
-            
+            _particleInstance.IfNotNull(particle => particle.Destroy());
             Player.Controller.AttackComponent.Damage /= 1 + BuffData.buffValue;
         }
     }

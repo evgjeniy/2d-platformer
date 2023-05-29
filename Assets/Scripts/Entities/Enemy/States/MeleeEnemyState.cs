@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using Entities.Enemy.EnemyEntities;
 using UnityEngine;
+using Utils;
 
 namespace Entities.Enemy.States
 {
@@ -26,7 +27,7 @@ namespace Entities.Enemy.States
 
             var animation = _enemy.SkeletonAnimation.Skeleton.Data.FindAnimation(deadAnimation);
             
-            Object.Destroy(_enemy.gameObject, animation?.Duration ?? 0);
+            _enemy.Destroy(animation?.Duration ?? 0);
         }
     }
 }

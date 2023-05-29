@@ -1,6 +1,8 @@
 ﻿using Entities.Player;
 using Interactable.Base;
 using UnityEngine;
+using UnityEngine.Events;
+using Utils;
 
 namespace Interactable
 {
@@ -11,18 +13,23 @@ namespace Interactable
     {
         [Header("Coin Settings")]
         [SerializeField, Min(0)] private int coinsAmount;
-
+        [SerializeField] private UnityEvent onCoinCollect;
+        
         public void Interact(MonoCashed<Collider2D> coin, Collider2D other)
         {
             if (!other.TryGetComponent<PlayerEntity>(out _)) return;
 
-            coin.First.enabled = false;
-
-            PlayCollectAnimation(coin, onKill: () =>
-            {
-                coin.GetComponent<MoneyCollector>()?.Collect(coinsAmount);
-                Object.Destroy(coin.gameObject);
-            });
+            PlayCollectAnimation(coin,
+                onPlay: () =>
+                {
+                    coin.First.Disable();
+                    onCoinCollect?.Invoke();
+                },
+                onKill: () =>
+                {
+                    coin.GetComponent<MoneyCollector>()?.Collect(coinsAmount);
+                    Object.Destroy(coin.gameObject);
+                });
         }
     }
 }

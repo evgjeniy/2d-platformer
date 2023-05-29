@@ -23,10 +23,10 @@ namespace Interactable
 
         public void Interact(MonoCashed<Collider2D> sign, Collider2D other)
         {
-            if (!other.TryGetComponent<PlayerEntity>(out var playerEntity)) return;
+            if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
 
-            if (sign.First.IsTouching(other)) _enteredEntities.Add(playerEntity);
-            else _enteredEntities.Remove(playerEntity);
+            if (sign.First.IsTouching(other)) _enteredEntities.Add(player);
+            else _enteredEntities.Remove(player);
             
             _tween?.Kill();
             _tween = fadeTraining.DOFade(_enteredEntities.Count == 0 ? 0.0f : 1.0f, 0.5f).SetEase(Ease.Linear)

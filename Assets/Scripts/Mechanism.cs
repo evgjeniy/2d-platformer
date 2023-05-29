@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using Utils;
 
 [RequireComponent(typeof(Collider2D))]
 public class Mechanism : MonoCashed<Collider2D>
@@ -11,6 +12,6 @@ public class Mechanism : MonoCashed<Collider2D>
     public void Move()
     {
         transform.DOMove(position + (Vector3)moveOffset, moveDuration)
-            .SetEase(moveEase).SetLink(gameObject).OnKill(() => First.enabled = false);
+            .SetEase(moveEase).SetLink(gameObject).OnKill(First.Disable);
     }
 }

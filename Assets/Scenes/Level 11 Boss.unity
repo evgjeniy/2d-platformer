@@ -394,10 +394,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2198510336916685905, guid: 4d8bcab84bd34b84c8b2364736ce0bf3, type: 3}
   positionOffset: {x: 0, y: 0, z: 0}
-  levelCamera: {fileID: 0}
-  gameOverUi: {fileID: 910021602}
+  levelCamera: {fileID: 998113908}
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 910021602}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 910021605}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7da7629676326fb42a7e60d379036691, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   boss: {fileID: 493109610}
   levelCompleteUi: {fileID: 910021603}
+  onBossDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 910021603}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 910021604}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &157974388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,8 +1652,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Level 11 Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 7044339406090962955, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Level 11 Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 7044339406480897171, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044339406480897171, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: Level 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044339406892177609, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
@@ -1663,6 +1724,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7044339407180433862, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
   m_PrefabInstance: {fileID: 910021601}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &910021604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8603576938880988547, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+  m_PrefabInstance: {fileID: 910021601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &910021605 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8057067670356832877, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+  m_PrefabInstance: {fileID: 910021601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &998113907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1722,9 +1793,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3626578333369317406, guid: 34453241620c3d24d9281c39d1f6613c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34453241620c3d24d9281c39d1f6613c, type: 3}
+--- !u!114 &998113908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3626578333369317406, guid: 34453241620c3d24d9281c39d1f6613c, type: 3}
+  m_PrefabInstance: {fileID: 998113907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1876c1c3034c8e80a339e7f26412b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012065088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +1897,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3202907763832279960, guid: 5fb3d464dfc1c4c42a99a678f9445621, type: 3}
+      propertyPath: interactable.levelCamera
+      value: 
+      objectReference: {fileID: 998113908}
     - target: {fileID: 3202907763832279961, guid: 5fb3d464dfc1c4c42a99a678f9445621, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -9756,7 +9841,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable:
-    knockForce: 20
     damage: 50
 --- !u!61 &6329136404600801757
 BoxCollider2D:
@@ -9815,7 +9899,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable:
-    knockForce: 20
     damage: 50
 --- !u!61 &8461673777836142533
 BoxCollider2D:

@@ -41,11 +41,8 @@ namespace Entities.Enemy.Controllers
         {
             foreach (var collider in attackOverlap.Colliders)
             {
-                if (!collider.TryGetComponent<PlayerEntity>(out var player)) continue;
-
-                var spawnPosition = _enemyEntity.position + Vector3.up;
-                var missile = Object.Instantiate(missilePrefab, spawnPosition, Quaternion.identity);
-                missile.Move(player.position);
+                if (!collider.TryGetComponent<PlayerEntity>(out var player)) continue; 
+                missilePrefab.Instantiate(_enemyEntity.position + Vector3.up).Move(player.position);
             }
 
             attackOverlap.Colliders.Clear();

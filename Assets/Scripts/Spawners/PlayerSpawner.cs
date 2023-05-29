@@ -1,6 +1,7 @@
 ﻿using Entities.Player;
 using InputScripts;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Spawners
@@ -9,8 +10,8 @@ namespace Spawners
     {
         [Header("Dependencies")]
         [SerializeField] private CameraFollow levelCamera;
-        [SerializeField] private GameObject gameOverUi;
-
+        [SerializeField] private UnityEvent onGameOver;
+        
         public static bool IsTwoPlayers { get; set; }
 
         protected override void PostAwake()
@@ -29,8 +30,11 @@ namespace Spawners
 
             TryLoadPlayerJson(inputType, newPlayer);
 
-            if (levelCamera != null) levelCamera.AddTarget(newPlayer.transform);
-            if (gameOverUi != null) SetupPlayerDeadEvent(newPlayer);
+            levelCamera.IfNotNull(followCamera =>
+            {
+                followCamera.AddTarget(newPlayer.transform);
+                SetupPlayerDeadEvent(newPlayer);
+            });
 
             SetupLevelCompleteOnBossDeadEvent(newPlayer);
         }
@@ -46,11 +50,10 @@ namespace Spawners
 
         private void SetupPlayerDeadEvent(PlayerEntity newPlayer) => newPlayer.State.OnDead += () =>
         {
-            foreach (var cameraTarget in levelCamera.Targets)
-                if (cameraTarget.TryGetComponent<PlayerEntity>(out var player))
-                    player.enabled = false;
+            foreach (var target in levelCamera.Targets)
+                target.GetComponent<PlayerEntity>().IfNotNull(player => player.Disable());
 
-            gameOverUi.SetActive(true);
+            onGameOver?.Invoke();
         };
     }
 }

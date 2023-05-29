@@ -18,22 +18,23 @@ namespace Utils
             var healthBarSlider = healthCanvasRect.GetComponentInChildren<Slider>();
             if (healthBarSlider == null) return;
 
-            healthBarSlider.direction = inputType == PlayerInputType.FirstPlayer
+            var isFirstPlayer = inputType == PlayerInputType.FirstPlayer;
+            healthBarSlider.direction = isFirstPlayer
                 ? Slider.Direction.LeftToRight
                 : Slider.Direction.RightToLeft;
             
             var healthBarRect = healthBarSlider.GetComponent<RectTransform>();
             if (healthBarRect == null) return;
 
-            var anchors = new Vector2(inputType == PlayerInputType.FirstPlayer ? 0.0f : 1.0f, 1.0f);
+            var anchors = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 1.0f);
             
             healthBarRect.pivot = anchors;
             healthBarRect.anchorMax = anchors;
             healthBarRect.anchorMin = anchors;
-            
-            healthBarRect.localPosition = new Vector3(
-                healthCanvasRect.sizeDelta.x / 2.0f * (inputType == PlayerInputType.FirstPlayer ? -1 : 1), 
-                healthCanvasRect.sizeDelta.y / 2.0f, 0.0f);
+
+            var healthBarLocalPosition = healthCanvasRect.sizeDelta / 2.0f - Vector2.one * 5;
+            healthBarLocalPosition.x *= isFirstPlayer ? -1 : 1;
+            healthBarRect.localPosition = healthBarLocalPosition;
         }
         
         public static PlayerEntity GetNearestPlayer(this List<PlayerEntity> players, Transform target)

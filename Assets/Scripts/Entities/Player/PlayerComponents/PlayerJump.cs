@@ -9,8 +9,8 @@ namespace Entities.Player.PlayerComponents
     {
         public enum State { Air, Grounded, Ladder }
      
-        [SerializeField] private float jumpForce = 250f;
         [SerializeField] private CircleOverlap2D groundCheckOverlap;
+        [SerializeField, Min(0.0f)] private float jumpVelocityY = 10.0f;
         [SerializeField, Min(1.0f)] private float ladderSpeed = 3.0f;
         [SerializeField] private LayerMask ladderLayer;
 
@@ -27,7 +27,7 @@ namespace Entities.Player.PlayerComponents
 
             var colliders = groundCheckOverlap.Colliders;
             
-            if (colliders.Any(collider => Mathf.Pow(2, collider.gameObject.layer) == 512.0f))
+            if (colliders.Any(collider => Mathf.Abs(Mathf.Pow(2, collider.gameObject.layer) - ladderLayer.value) < 0.01f))
             {
                 JumpState = State.Ladder;
                 _tempGravityScale ??= _player.Rigidbody.gravityScale;
@@ -41,25 +41,23 @@ namespace Entities.Player.PlayerComponents
             }
         }
         
-        public void TryJump(float ladderDirection)
+        public void TryJump(float jumpDirection)
         {
-            if (ladderDirection == 0.0f) return;
+            if (jumpDirection == 0.0f) return;
             
             switch (JumpState)
             {
-                case State.Ladder: Ladder(ladderDirection); break;
-                case State.Grounded: Jump(); break;
+                case State.Ladder: Ladder(jumpDirection); break;
+                case State.Grounded: if (jumpDirection > 0.0f) Jump(); break;
                 case State.Air: break;
                 default: throw new System.ArgumentOutOfRangeException(nameof(JumpState));
             }
         }
 
-        private void Jump() => _player.Rigidbody.AddForce(new Vector2(0f, jumpForce));
+        private void Jump() => _player.Rigidbody.velocity = new Vector2(_player.Rigidbody.velocity.x, jumpVelocityY);
 
-        private void Ladder(float moveDirectionY)
-        {
-            _player.Rigidbody.MovePosition(_player.position + new Vector3(0.0f, moveDirectionY * ladderSpeed));
-        }
+        private void Ladder(float moveDirectionY) => _player.Rigidbody.MovePosition(
+            _player.position + new Vector3(0.0f, moveDirectionY * ladderSpeed));
 
         public void TryDrawGizmos() => groundCheckOverlap.TryDrawGizmos();
     }

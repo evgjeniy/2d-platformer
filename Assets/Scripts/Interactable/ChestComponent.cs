@@ -3,6 +3,7 @@ using Interactable.Base;
 using Interactable.InteractableAnimations;
 using Spawners;
 using UnityEngine;
+using Utils;
 
 namespace Interactable
 {
@@ -27,7 +28,7 @@ namespace Interactable
             {
                 player.Inventory.Remove(keyGameObject);
                 chest.GetComponent<MoneyCollector>()?.Collect(coinsAmount);
-                chest.First.enabled = false;
+                chest.First.Disable();
                 
                 if (collectParticle != null) collectParticle.Spawn(chest.position)?.Play();
                 if (openChestSprite != null && chest.TryGetComponent<SpriteRenderer>(out var spriteRenderer))

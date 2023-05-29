@@ -11,6 +11,7 @@ namespace Entities
         public UnityEvent<float> onHealthChanged;
         public UnityEvent<float> onDamaged;
         public UnityEvent<float> onHealed;
+        public UnityEvent onDead;
         public event System.Action OnDead;
         
         private float _currentHealth;
@@ -41,6 +42,7 @@ namespace Entities
             onDamaged?.Invoke(CurrentHealth / MaxHealth);
             if (CurrentHealth == 0.0f)
             {
+                onDead?.Invoke();
                 OnDead?.Invoke();
                 EntityDeath();
             }

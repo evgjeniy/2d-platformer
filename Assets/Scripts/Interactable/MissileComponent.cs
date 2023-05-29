@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using Utils;
 
 namespace Interactable
 {
@@ -12,7 +13,7 @@ namespace Interactable
             var deltaDistance = targetPosition - position;
  
             transform.DOMove(targetPosition, deltaDistance.magnitude / speed)
-                .SetLink(gameObject).SetEase(Ease.OutSine).OnKill(() => Destroy(gameObject));
+                .SetLink(gameObject).SetEase(Ease.OutSine).OnKill(gameObject.Destroy);
         } 
     }
 }

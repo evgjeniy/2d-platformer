@@ -3,19 +3,17 @@ using Entities.Player.PlayerComponents;
 using Interactable.Base;
 using Spawners;
 using UnityEngine;
+using Utils;
 
 namespace Interactable
 {
     public class ChestKeyComponent : MovableInteractableBehaviour<ChestKey>
     {
-        protected override void PostAwake()
+        protected override void PostAwake() => GetComponent<ParticleSpawner>().IfNotNull(spawner =>
         {
-            var particleSpawner = GetComponent<ParticleSpawner>();
-            if (particleSpawner == null) return;
-            
-            particleSpawner.Spawn(transform)?.Play();
-            Destroy(particleSpawner); 
-        }
+            spawner.Spawn(transform)?.Play();
+            spawner.DestroyComponent();
+        });
     }
     
     [System.Serializable]
@@ -30,7 +28,7 @@ namespace Interactable
             
             PlayCollectAnimation(key, onKill: () => Object.Destroy(key.gameObject), onPlay: () =>
             {
-                key.First.enabled = false;
+                key.First.Disable();
                 player.Inventory.Add(this);
             });
         }

@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
+using Utils;
 
 public class SaveCharacterSkins : MonoBehaviour
 {
-    private const string ItemParamsContainerSaveKey = nameof(ItemParamsContainerSaveKey);
     private List<string> _boughtSkins = new();
 
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey(ItemParamsContainerSaveKey))
+        if (!PlayerPrefs.HasKey(StringConstants.ItemParamsContainerSaveKey))
         {
-            PlayerPrefs.SetString(ItemParamsContainerSaveKey, "[null,\"Equipment/Helmet/Basic/AgileHat\",\"Equipment/Armor/Basic/Robe\",\"Equipment/MeleeWeapon1H/Basic/Hammer/WoodenSpikedClub\",\"BodyParts/Body/Basic/Human\",\"BodyParts/Head/Basic/Head\",\"BodyParts/Hair/Thrones/Hair5\",\"BodyParts/Hair/Bonus/VillageGirl\",\"BodyParts/Beard/Basic/Beard\",\"BodyParts/Eyebrows/Emoji/=3=\",\"BodyParts/Eyebrows/Basic/Angry\",\"BodyParts/Eyes/Expressions/Bored\",\"BodyParts/Ears/Basic/HumanEar\",\"BodyParts/Mouth/Bonus/1\"]");
+            PlayerPrefs.SetString(StringConstants.ItemParamsContainerSaveKey, StringConstants.BaseShopSet);
             PlayerPrefs.Save();
         }
         
-        var savedJson = PlayerPrefs.GetString(ItemParamsContainerSaveKey);
+        var savedJson = PlayerPrefs.GetString(StringConstants.ItemParamsContainerSaveKey);
         _boughtSkins = JsonConvert.DeserializeObject<List<string>>(savedJson);
     }
 
@@ -29,16 +29,16 @@ public class SaveCharacterSkins : MonoBehaviour
 
     private void SaveData()
     {
-        PlayerPrefs.SetString(ItemParamsContainerSaveKey, JsonConvert.SerializeObject(_boughtSkins));
+        PlayerPrefs.SetString(StringConstants.ItemParamsContainerSaveKey, JsonConvert.SerializeObject(_boughtSkins));
         PlayerPrefs.Save();
     }
 
 #if UNITY_EDITOR
 
-    [ContextMenu("ClearSavedSkins")]
+    [ContextMenu("Clear Saved Skins")]
     private void ClearPrefs()
     {
-        PlayerPrefs.DeleteKey(ItemParamsContainerSaveKey);
+        PlayerPrefs.DeleteKey(StringConstants.ItemParamsContainerSaveKey);
         PlayerPrefs.Save();
     }
     

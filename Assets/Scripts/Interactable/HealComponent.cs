@@ -2,6 +2,7 @@
 using Interactable.Base;
 using Spawners;
 using UnityEngine;
+using Utils;
 
 namespace Interactable
 {
@@ -18,9 +19,9 @@ namespace Interactable
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
             if (!player.State.Heal(healValue)) return; 
 
-            PlayCollectAnimation(apple, onKill: () => Object.Destroy(apple.gameObject), onPlay: () =>
+            PlayCollectAnimation(apple, onKill: apple.Destroy, onPlay: () =>
             {
-                apple.First.enabled = false;
+                apple.First.Disable();
                 apple.GetComponent<ParticleSpawner>()?.Spawn(apple.position + Vector3.up)?.Play();
             });
         }

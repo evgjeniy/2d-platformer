@@ -13,10 +13,10 @@ namespace Interactable
         
         public void Interact(MonoCashed<Collider2D> saveZone, Collider2D other)
         {
-            if (!other.TryGetComponent<PlayerEntity>(out var playerEntity)) return;
+            if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
 
-            levelCamera.RemoveTarget(playerEntity.transform);
-            playerEntity.TakeDamage(float.MaxValue);
+            levelCamera.RemoveTarget(player.transform);
+            player.TakeDamage(float.MaxValue);
         }
     }
 }

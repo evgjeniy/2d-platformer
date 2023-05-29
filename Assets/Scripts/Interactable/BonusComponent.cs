@@ -5,6 +5,7 @@ using Entities.Player;
 using Interactable.Base;
 using Interactable.InteractableAnimations;
 using UnityEngine;
+using Utils;
 
 namespace Interactable
 {
@@ -27,9 +28,9 @@ namespace Interactable
         {
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
 
-            bonus.PlayBounceJumpAnimationWithFade(onKill: () => Object.Destroy(bonus.gameObject), onPlay: () =>
+            bonus.PlayBounceJumpAnimationWithFade(onKill: bonus.Destroy, onPlay: () =>
             {
-                bonus.First.enabled = false;
+                bonus.First.Disable();
                 player.State.AddBuff(buffs.Random().GetBuff(player));
             });
         }

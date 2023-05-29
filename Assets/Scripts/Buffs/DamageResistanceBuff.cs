@@ -1,24 +1,22 @@
 ﻿using Entities.Player;
 using UnityEngine;
+using Utils;
 
 namespace Buffs
 {
     public class DamageResistanceBuff : Buff
     {
-        private readonly ParticleSystem _particleInstance;
+        private ParticleSystem _particleInstance;
 
         public DamageResistanceBuff(PlayerEntity player, BuffData buffData) : base(player, buffData)
         {
             Player.State.DamageResistanceMultipliers.Add(BuffData.buffValue);
-            
-            if (buffData.particleSpawner != null)
-                _particleInstance = BuffData.particleSpawner.Spawn(player.transform);
+            BuffData.particleSpawner.IfNotNull(spawner => _particleInstance = spawner.Spawn(player.transform));
         }
 
         protected override void DeBuff()
         {
-            if (_particleInstance != null) Object.Destroy(_particleInstance.gameObject);
-            
+            _particleInstance.IfNotNull(particle => particle.Destroy());
             Player.State.DamageResistanceMultipliers.Remove(BuffData.buffValue);
         }
     }

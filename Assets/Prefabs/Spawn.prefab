@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2198510336916685905, guid: 4d8bcab84bd34b84c8b2364736ce0bf3, type: 3}
-  deleteOnRespawn: 1
+  positionOffset: {x: 0, y: 0, z: 0}
   levelCamera: {fileID: 0}
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5021463237385668566
 GameObject:
   m_ObjectHideFlags: 0

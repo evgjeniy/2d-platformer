@@ -1,5 +1,6 @@
 using Spawners;
 using UnityEngine;
+using Utils;
 
 public class MainMenu : SceneLoader
 {
@@ -9,8 +10,8 @@ public class MainMenu : SceneLoader
     {
         PlayerSpawner.IsTwoPlayers = isTwoPlayers;
 
-        LoadScene(PlayerPrefs.HasKey(LAST_LEVEL_SCENE_SAVE_KEY)
-            ? PlayerPrefs.GetString(LAST_LEVEL_SCENE_SAVE_KEY)
+        LoadSceneNextFrame(PlayerPrefs.HasKey(StringConstants.LastLevelSceneSaveKey)
+            ? PlayerPrefs.GetString(StringConstants.LastLevelSceneSaveKey)
             : firstLevelName);
     }
 }

@@ -5,6 +5,7 @@ using Interactable.Base;
 using Spawners;
 using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
 namespace Interactable
 {
@@ -31,7 +32,7 @@ namespace Interactable
             
             onFinish?.Invoke();
             
-            _enteredEntities.ForEach(entity => entity.enabled = false);
+            _enteredEntities.ForEach(entity => entity.Disable());
         }
     }
 }

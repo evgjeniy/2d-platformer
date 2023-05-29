@@ -9,15 +9,13 @@ namespace Interactable
     [System.Serializable]
     public class EnemyInteractable : IInteractable
     {
-        [SerializeField] private float damage;
-        [SerializeField] private float knockForce;
+        [SerializeField] private float damage = 50.0f;
         
         public void Interact(MonoCashed<Collider2D> enemy, Collider2D other)
         {
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
             
-            var knockBackDirection = (player.position - enemy.position).normalized;
-            player.State.TakeDamageWithForce(knockForce * knockBackDirection, damage);
+            player.State.TakeDamage(damage);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Entities.Enemy.EnemyEntities;
 using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
 namespace Entities.Enemy.States
 {
@@ -45,7 +46,7 @@ namespace Entities.Enemy.States
 
             var animation = _boss.SkeletonAnimation.Skeleton.Data.FindAnimation(deadAnimation);
             
-            Object.Destroy(_boss.gameObject, animation?.Duration ?? 0);
+            _boss.Destroy(animation?.Duration ?? 0);
         }
     }
 }
