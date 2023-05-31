@@ -17,7 +17,7 @@ namespace Entities.Player
         protected override void EntityAwake() => Rigidbody = GetComponent<Rigidbody2D>();
         
         protected override void EntityEnable() => Rigidbody.bodyType = RigidbodyType2D.Dynamic;
-        
+
         protected override void EntityDisable()
         {
             Character.SetState(CharacterState.Idle);

@@ -346,6 +346,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1961331828}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Text, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
 --- !u!4 &19117794 stripped
@@ -2005,6 +2033,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1961331828}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Text, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
 --- !u!4 &535489953 stripped
@@ -2581,6 +2637,34 @@ PrefabInstance:
     - target: {fileID: 955986550067857931, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
       propertyPath: m_Name
       value: Chest_Locked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301792428447769157, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301792428447769157, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301792428447769157, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1961331828}
+    - target: {fileID: 8301792428447769157, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301792428447769157, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301792428447769157, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Text, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301792428447769157, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9012208864813534189, guid: c4df2bac5fdb548478962b6e3860c5da, type: 3}
       propertyPath: m_RootOrder
@@ -3943,6 +4027,34 @@ PrefabInstance:
     - target: {fileID: 5233754222815823395, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1961331828}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Text, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
@@ -28011,6 +28123,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1961331828}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Text, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510799267053863808, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
+      propertyPath: onCoinsChangedString.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f38bca55f7e1f47ba0c5b1c2e266ad, type: 3}
 --- !u!4 &1879491787 stripped
@@ -28259,6 +28399,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961331828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7703280342635695956, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+  m_PrefabInstance: {fileID: 992311432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1987961236
 PrefabInstance:
   m_ObjectHideFlags: 0

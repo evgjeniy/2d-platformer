@@ -5,6 +5,7 @@ using Entities.Player;
 using Interactable.Base;
 using Interactable.InteractableAnimations;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Interactable
@@ -23,6 +24,7 @@ namespace Interactable
     public class Bonus : IInteractable
     {
         [SerializeField] private List<BuffData> buffs;
+        [SerializeField] private UnityEvent onBonusCollected;
         
         public void Interact(MonoCashed<Collider2D> bonus, Collider2D other)
         {
@@ -30,6 +32,8 @@ namespace Interactable
 
             bonus.PlayBounceJumpAnimationWithFade(onKill: bonus.Destroy, onPlay: () =>
             {
+                onBonusCollected?.Invoke();
+
                 bonus.First.Disable();
                 player.State.AddBuff(buffs.Random().GetBuff(player));
             });

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Overlaps2D;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Entities.Player.PlayerComponents
 {
@@ -13,6 +14,10 @@ namespace Entities.Player.PlayerComponents
         [SerializeField, Min(0.0f)] private float jumpVelocityY = 10.0f;
         [SerializeField, Min(1.0f)] private float ladderSpeed = 3.0f;
         [SerializeField] private LayerMask ladderLayer;
+        [SerializeField] private LayerMask bubbleLayer;
+
+        [Space, SerializeField] private AudioSource onBubbleJump;
+        [SerializeField] private AudioClip bubbleSound;
 
         private PlayerEntity _player;
         private float? _tempGravityScale;
@@ -44,6 +49,9 @@ namespace Entities.Player.PlayerComponents
         public void TryJump(float jumpDirection)
         {
             if (jumpDirection == 0.0f) return;
+            if (Mathf.Abs(jumpDirection) <= 0.5f) return;
+
+            jumpDirection *= Time.fixedDeltaTime;
             
             switch (JumpState)
             {
@@ -54,7 +62,17 @@ namespace Entities.Player.PlayerComponents
             }
         }
 
-        private void Jump() => _player.Rigidbody.velocity = new Vector2(_player.Rigidbody.velocity.x, jumpVelocityY);
+        private void Jump()
+        {
+            if (groundCheckOverlap.Colliders.Any(c =>
+                    Mathf.Abs(Mathf.Pow(2, c.gameObject.layer) - bubbleLayer.value) < 0.01f))
+            {
+                onBubbleJump.clip = bubbleSound;
+                onBubbleJump.PlayDelayed(0.05f);
+            }
+
+            _player.Rigidbody.velocity = new Vector2(_player.Rigidbody.velocity.x, jumpVelocityY);
+        }
 
         private void Ladder(float moveDirectionY) => _player.Rigidbody.MovePosition(
             _player.position + new Vector3(0.0f, moveDirectionY * ladderSpeed));

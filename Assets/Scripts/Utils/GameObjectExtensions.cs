@@ -13,7 +13,7 @@ namespace Utils
             return component;
         }
 
-        public static void InvokeNextFrame<T>(this T context, System.Action<T> action, float? time) where T : MonoBehaviour
+        public static void InvokeNextFrame<T>(this T context, System.Action<T> action, float? time = null) where T : MonoBehaviour
         {
             context.StartCoroutine(NextFrameCoroutine());
 

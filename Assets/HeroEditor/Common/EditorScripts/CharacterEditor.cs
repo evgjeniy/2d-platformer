@@ -31,6 +31,7 @@ namespace Assets.HeroEditor.Common.EditorScripts
         public MoneyCollector Wallet;
         public SaveCharacterSkins SaveCharacterSkins;
         public UnityEvent<bool> OnItemBought;
+        public UnityEvent<bool> OnItemSelect;
         
         public List<string> PaintParts;
         public Button PaintButton;
@@ -309,15 +310,20 @@ namespace Assets.HeroEditor.Common.EditorScripts
             Inventory.OnLeftClick = item =>
             {
                 ItemName.text = item.Params.Id ?? "Empty";
-                
-                if (item.Params.Price != 0 && !TryBuyItem(item)) return;
-                SaveCharacterSkins.Add(item.Params.Path);
-                
+
                 equipAction(item);
                 EquipCallback?.Invoke(item);
                 SetPaintButton(tab.name, item);
                 
-                OnItemBought?.Invoke(true);
+                if (item.Params.Price == 0)
+                {
+                    OnItemSelect?.Invoke(true);
+                }
+                else if (TryBuyItem(item))
+                {
+                    SaveCharacterSkins.Add(item.Params.Path);
+                    OnItemBought?.Invoke(true);
+                }
             };
 
             var equipped = items.Count > equippedIndex + 1 ? items[equippedIndex + 1] : null;

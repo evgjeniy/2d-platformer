@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Interactable
 {
-    public class SaveZoneComponent : InteractableBehaviour<SaveZone> {}
+    public class SaveZoneComponent : InteractableBehaviour<DeathZone> {}
 
     [System.Serializable]
-    public class SaveZone : IInteractable
+    public class DeathZone : IInteractable
     {
         [SerializeField] private CameraFollow levelCamera;
         
@@ -16,7 +16,7 @@ namespace Interactable
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
 
             levelCamera.RemoveTarget(player.transform);
-            player.TakeDamage(float.MaxValue);
+            player.State.TakeDeathDamage();
         }
     }
 }

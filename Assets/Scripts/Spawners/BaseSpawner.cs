@@ -17,5 +17,7 @@ namespace Spawners
 
         public virtual T Spawn(Vector3 spawnPosition) => prefab.IfNotNull(() => 
             Instantiate(prefab, spawnPosition + positionOffset, Quaternion.identity));
+        
+        public void Spawn() => prefab.IfNotNull(() => Instantiate(prefab).transform.position += positionOffset);
     }
 }

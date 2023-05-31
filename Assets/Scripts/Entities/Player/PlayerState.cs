@@ -5,7 +5,6 @@ using Buffs;
 using Entities.Player.PlayerComponents;
 using Spawners;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Entities.Player
 {
@@ -44,13 +43,7 @@ namespace Entities.Player
                 _buffs[i].UpdateTime(Time.deltaTime);
         }
 
-        public void TakeDamageWithForce(Vector3 force, float damage)
-        {
-            if (IsInvulnerable) return;
-
-            _playerEntity.Rigidbody.AddForce(force);
-            TakeDamage(damage);
-        }
+        public void TakeDeathDamage() => base.TakeDamage(float.MaxValue);
 
         public override void TakeDamage(float damage)
         {

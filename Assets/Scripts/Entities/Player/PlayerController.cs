@@ -54,8 +54,8 @@ namespace Entities.Player
                 _ => throw new System.ArgumentOutOfRangeException(nameof(JumpComponent.JumpState)) 
             });
 
-            MovementComponent.Move(moveDirection.x * Time.fixedDeltaTime);
-            JumpComponent.TryJump(moveDirection.y * Time.fixedDeltaTime);
+            MovementComponent.Move(moveDirection.x);
+            JumpComponent.TryJump(moveDirection.y);
         }
 
         protected override void OnEnable()

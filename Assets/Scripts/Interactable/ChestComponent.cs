@@ -1,8 +1,8 @@
 ﻿using Entities.Player;
 using Interactable.Base;
 using Interactable.InteractableAnimations;
-using Spawners;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Interactable
@@ -13,10 +13,8 @@ namespace Interactable
     public class Chest : CollectableBehaviour, IInteractable
     {
         [Header("Chest Settings")]
-        [SerializeField] private int coinsAmount = 500;
-        [SerializeField] private Sprite openChestSprite;
-        [SerializeField] private ParticleSpawner collectParticle;
-        
+        [SerializeField] private UnityEvent onChestCollected;
+
         public void Interact(MonoCashed<Collider2D> chest, Collider2D other)
         {
             if (!other.TryGetComponent<PlayerEntity>(out var player)) return;
@@ -27,12 +25,9 @@ namespace Interactable
             chest.PlayBounceJumpAnimation(0.5f, onPlay: () =>
             {
                 player.Inventory.Remove(keyGameObject);
-                chest.GetComponent<MoneyCollector>()?.Collect(coinsAmount);
                 chest.First.Disable();
                 
-                if (collectParticle != null) collectParticle.Spawn(chest.position)?.Play();
-                if (openChestSprite != null && chest.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
-                    spriteRenderer.sprite = openChestSprite;
+                onChestCollected?.Invoke();
             });
         }
     }

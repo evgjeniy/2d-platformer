@@ -17,8 +17,12 @@ namespace Entities.Player.PlayerComponents
 
         public void Move(float move)
         {
+            if (move != 0.0f && Mathf.Abs(move) <= 0.5f) return;
+            
             if (_player == null) return;
             if (_player.Controller.JumpComponent.JumpState == PlayerJump.State.Air && !isAirControl) return;
+
+            move *= Time.fixedDeltaTime;
             
             var velocity = _player.Rigidbody.velocity;
             var targetVelocity = new Vector2(move * moveSpeed * 10.0f, velocity.y);

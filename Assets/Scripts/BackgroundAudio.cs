@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 using Utils;
 
-public class AudioSourceSetup : MonoBehaviour
+public class BackgroundAudio : MonoBehaviour
 {
     [SerializeField] private AudioClip audioClip;
     [SerializeField, Range(0.0f, 1.0f)] private float volume = 0.1f;
@@ -10,17 +11,31 @@ public class AudioSourceSetup : MonoBehaviour
 
     private void Awake()
     {
-        if (GameObject.FindGameObjectsWithTag("Background Audio").Length > 1) 
-            Destroy(gameObject);
-        else 
-            Initialize();
+        if (FindObjectsOfType<BackgroundAudio>().Length > 1) Destroy(gameObject);
+        else Initialize();
+    }
+
+    private void OnEnable() => FocusChanged(true);
+
+    private void OnDisable() => FocusChanged(false);
+
+    private void OnApplicationFocus(bool isFocused) => FocusChanged(isFocused);
+
+    private void OnApplicationPause(bool isPaused) => FocusChanged(!isPaused);
+
+    private void FocusChanged(bool isFocused)
+    {
+        var source = gameObject.GetOrAddComponent<AudioSource>(SetupAudioSource);
+        source.ignoreListenerPause = true;
+        
+        if (isFocused) source.UnPause();
+        else source.Pause();
     }
 
     private void Initialize()
     {
         if (dontDestroyOnLoad) DontDestroyOnLoad(gameObject);
         SetupAudioSource(gameObject.GetOrAddComponent<AudioSource>(SetupAudioSource));
-        Destroy(this);
     }
 
     private void SetupAudioSource(AudioSource audioSource)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using Entities.Player;
 using InputScripts;
 using UnityEngine;
@@ -11,30 +12,78 @@ namespace Utils
         public static void SetupPlayer(this PlayerEntity playerEntity, PlayerInputType inputType)
         {
             playerEntity.Controller.InputType = inputType;
+            playerEntity.Character.FromJson(PlayerPrefs.GetString(inputType.GetSaveKey(), StringConstants.StartCharacterSkin));
 
-            var healthCanvasRect = playerEntity.GetComponentInChildren<Canvas>()?.GetComponent<RectTransform>();
-            if (healthCanvasRect == null) return;
+            var canvasRect = playerEntity.GetComponentInChildren<Canvas>()?.GetComponent<RectTransform>();
+            SetupPlayerHealthBar(canvasRect, inputType);
+            SetupPlayerJoystick(canvasRect, inputType);
+            SetupPlayerAttackArea(canvasRect, inputType);
+        }
 
-            var healthBarSlider = healthCanvasRect.GetComponentInChildren<Slider>();
+        private static void SetupPlayerHealthBar(RectTransform canvasRect, PlayerInputType inputType)
+        {
+            if (canvasRect == null) return;
+
+            var healthBarSlider = canvasRect.GetComponentInChildren<Slider>();
             if (healthBarSlider == null) return;
 
             var isFirstPlayer = inputType == PlayerInputType.FirstPlayer;
             healthBarSlider.direction = isFirstPlayer
                 ? Slider.Direction.LeftToRight
                 : Slider.Direction.RightToLeft;
-            
+
             var healthBarRect = healthBarSlider.GetComponent<RectTransform>();
             if (healthBarRect == null) return;
 
             var anchors = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 1.0f);
-            
+
             healthBarRect.pivot = anchors;
             healthBarRect.anchorMax = anchors;
             healthBarRect.anchorMin = anchors;
 
-            var healthBarLocalPosition = healthCanvasRect.sizeDelta / 2.0f - Vector2.one * 5;
+            var healthBarLocalPosition = canvasRect.sizeDelta / 2.0f - Vector2.one * 5;
             healthBarLocalPosition.x *= isFirstPlayer ? -1 : 1;
             healthBarRect.localPosition = healthBarLocalPosition;
+        }
+
+        private static void SetupPlayerJoystick(RectTransform canvasRect, PlayerInputType inputType)
+        {
+            if (canvasRect == null) return;
+
+            var joystick = canvasRect.GetComponentInChildren<JoystickController>();
+            if (joystick == null) return;
+            
+            var isFirstPlayer = inputType == PlayerInputType.FirstPlayer;
+            joystick.controlPath = $"<Gamepad>/{(isFirstPlayer ? "left" : "right")}Stick";
+
+            var joystickRect = joystick.GetComponent<RectTransform>();
+            if (joystickRect == null) return;
+
+            joystickRect.pivot = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 0.0f);
+            joystickRect.anchorMin = new Vector2(isFirstPlayer ? 0.0f : 0.5f, 0.0f);
+            joystickRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 0.6f);
+
+            joystickRect.DOAnchorPos(Vector2.zero, 0.1f);
+        }
+
+        private static void SetupPlayerAttackArea(RectTransform canvasRect, PlayerInputType inputType)
+        {
+            if (canvasRect == null) return;
+
+            var attackArea = canvasRect.GetComponentInChildren<AttackMobileArea>();
+            if (attackArea == null) return;
+            
+            var isFirstPlayer = inputType == PlayerInputType.FirstPlayer;
+            attackArea.controlPath = $"<Gamepad>/{(isFirstPlayer ? "left" : "right")}Stick/down";
+
+            var joystickRect = attackArea.GetComponent<RectTransform>();
+            if (joystickRect == null) return;
+
+            joystickRect.pivot = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 1.0f);
+            joystickRect.anchorMin = new Vector2(isFirstPlayer ? 0.0f : 0.5f, 0.6f);
+            joystickRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 1.0f);
+
+            joystickRect.DOAnchorPos(Vector2.zero, 0.1f);
         }
         
         public static PlayerEntity GetNearestPlayer(this List<PlayerEntity> players, Transform target)

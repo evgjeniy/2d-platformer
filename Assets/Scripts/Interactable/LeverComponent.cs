@@ -3,6 +3,7 @@ using DG.Tweening;
 using Entities.Player;
 using Interactable.Base;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Interactable
@@ -13,6 +14,7 @@ namespace Interactable
     public class Lever : IInteractable
     {
         [SerializeField] private List<Mechanism> mechanisms;
+        [SerializeField] private UnityEvent onLeverPulled;
         
         public void Interact(MonoCashed<Collider2D> lever, Collider2D other)
         {
@@ -24,6 +26,8 @@ namespace Interactable
                 .DOScaleX( Mathf.Abs(scaleValue) * -Mathf.Sign(scaleValue), 0.1f)
                 .SetLink(lever.gameObject).OnPlay(() =>
                 {
+                    onLeverPulled?.Invoke();
+
                     lever.First.Disable();
                     mechanisms.ForEach(mechanism => mechanism.Move());
                 });

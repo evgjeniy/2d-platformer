@@ -7792,6 +7792,18 @@ MonoBehaviour:
   OnItemBought:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1286767222}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0396c463f73ed2644821d2cb365cb95d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1286705780}
         m_TargetAssemblyTypeName: Assets.HeroEditor.Common.EditorScripts.CharacterEditor,
           Assembly-CSharp
@@ -7804,6 +7816,34 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  OnItemSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1286767222}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: d6ff2737a672c1645b506abb7f6cddfb, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1286705780}
+        m_TargetAssemblyTypeName: Assets.HeroEditor.Common.EditorScripts.CharacterEditor,
+          Assembly-CSharp
+        m_MethodName: OnSelectTab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   PaintParts:
   - Body
@@ -13719,6 +13759,18 @@ MonoBehaviour:
   OnItemBought:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1286767222}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0396c463f73ed2644821d2cb365cb95d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 789660632}
         m_TargetAssemblyTypeName: Assets.HeroEditor.Common.EditorScripts.CharacterEditor,
           Assembly-CSharp
@@ -13731,6 +13783,34 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  OnItemSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1286767222}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: d6ff2737a672c1645b506abb7f6cddfb, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 789660632}
+        m_TargetAssemblyTypeName: Assets.HeroEditor.Common.EditorScripts.CharacterEditor,
+          Assembly-CSharp
+        m_MethodName: OnSelectTab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   PaintParts:
   - Body

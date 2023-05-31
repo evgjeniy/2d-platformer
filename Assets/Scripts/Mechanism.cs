@@ -11,7 +11,19 @@ public class Mechanism : MonoCashed<Collider2D>
 
     public void Move()
     {
+        var audioSource = GetComponent<AudioSource>();
+        var canPlay = audioSource != null && audioSource.clip != null;
+        
         transform.DOMove(position + (Vector3)moveOffset, moveDuration)
-            .SetEase(moveEase).SetLink(gameObject).OnKill(First.Disable);
+            .SetEase(moveEase).SetLink(gameObject)
+            .OnPlay(() =>
+            {
+                if (canPlay) audioSource.Play();
+            })
+            .OnKill(() =>
+            {
+                if (canPlay) audioSource.Stop();
+                First.Disable();
+            });
     }
 }
