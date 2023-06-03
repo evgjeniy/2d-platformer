@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 1033002334123580937}
   - component: {fileID: 1040871079335779273}
   - component: {fileID: 1033002334123581044}
-  - component: {fileID: 179103634153991255}
   - component: {fileID: 1131824407509458679}
   - component: {fileID: 1033002334123580939}
   - component: {fileID: 1033002334123580938}
-  - component: {fileID: -4865304642308804391}
+  - component: {fileID: -9209110805475971531}
+  - component: {fileID: -3974129104011890114}
   m_Layer: 7
   m_Name: Monster_2_Skulled Salamander
   m_TagString: Untagged
@@ -106,7 +106,163 @@ CircleCollider2D:
   m_Offset: {x: -0.2, y: 1}
   serializedVersion: 2
   m_Radius: 1.3
---- !u!82 &179103634153991255
+--- !u!114 &1131824407509458679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018293432309773681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonDataAsset: {fileID: 11400000, guid: db9bb13eb9b410549997b1090eed909b, type: 2}
+  initialSkinName: V4
+  initialFlipX: 0
+  initialFlipY: 0
+  updateWhenInvisible: 3
+  separatorSlotNames: []
+  zSpacing: 0
+  useClipping: 1
+  immutableTriangles: 0
+  pmaVertexColors: 1
+  clearStateOnDisable: 0
+  tintBlack: 0
+  singleSubmesh: 0
+  fixDrawOrder: 0
+  addNormals: 0
+  calculateTangents: 0
+  maskInteraction: 0
+  maskMaterials:
+    materialsMaskDisabled: []
+    materialsInsideMask: []
+    materialsOutsideMask: []
+  disableRenderingOnOverride: 1
+  _animationName: Idle
+  loop: 1
+  timeScale: 1
+--- !u!114 &1033002334123580939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018293432309773681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c264626893c4df985a68d1284754dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Controller>k__BackingField:
+    attackAnimation: Attack
+    attackDelay: 2
+    damage: 30
+    attackOverlap:
+      root: {fileID: 1021543007641072919}
+      positionOffset: {x: -0.2, y: 0.7}
+      zRotationOffset: 0
+      searchLayer:
+        serializedVersion: 2
+        m_Bits: 8
+      drawGizmos: 1
+      gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+      radius: 1.7
+  <State>k__BackingField:
+    <MaxHealth>k__BackingField: 100
+    onHealthChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    onDamaged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6545351733318650650}
+          m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+          m_MethodName: Play
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: -685758081447184080, guid: 984122cd7634ae14baee5922382846fa, type: 3}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 56b346de917806c4ebde1e6536a95875, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    onHealed:
+      m_PersistentCalls:
+        m_Calls: []
+    onDead:
+      m_PersistentCalls:
+        m_Calls: []
+    deadAnimation: Dead
+--- !u!114 &1033002334123580938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018293432309773681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50dedd3c4bf6bf14eb7403361b80cd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Events>k__BackingField:
+  - spineEvent: OnDamaging
+    unityHandler:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 274f386bbdf3c354a8ac3261554592a7, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1033002334123580939}
+          m_TargetAssemblyTypeName: Entities.Enemy.EnemyEntities.MeleeEnemyEntity,
+            Assembly-CSharp
+          m_MethodName: EntityAttack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1131824407509458679}
+          m_TargetAssemblyTypeName: Spine.Unity.SkeletonAnimation, spine-unity
+          m_MethodName: set_AnimationName
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Idle
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!82 &-9209110805475971531
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,163 +358,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1131824407509458679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018293432309773681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: db9bb13eb9b410549997b1090eed909b, type: 2}
-  initialSkinName: V4
-  initialFlipX: 0
-  initialFlipY: 0
-  updateWhenInvisible: 3
-  separatorSlotNames: []
-  zSpacing: 0
-  useClipping: 1
-  immutableTriangles: 0
-  pmaVertexColors: 1
-  clearStateOnDisable: 0
-  tintBlack: 0
-  singleSubmesh: 0
-  fixDrawOrder: 0
-  addNormals: 0
-  calculateTangents: 0
-  maskInteraction: 0
-  maskMaterials:
-    materialsMaskDisabled: []
-    materialsInsideMask: []
-    materialsOutsideMask: []
-  disableRenderingOnOverride: 1
-  _animationName: Idle
-  loop: 1
-  timeScale: 1
---- !u!114 &1033002334123580939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018293432309773681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c264626893c4df985a68d1284754dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Controller>k__BackingField:
-    attackAnimation: Attack
-    attackDelay: 2
-    damage: 30
-    attackOverlap:
-      root: {fileID: 1021543007641072919}
-      positionOffset: {x: -0.2, y: 0.7}
-      zRotationOffset: 0
-      searchLayer:
-        serializedVersion: 2
-        m_Bits: 8
-      drawGizmos: 1
-      gizmosColor: {r: 1, g: 0, b: 0, a: 1}
-      radius: 1.7
-  <State>k__BackingField:
-    <MaxHealth>k__BackingField: 100
-    onHealthChanged:
-      m_PersistentCalls:
-        m_Calls: []
-    onDamaged:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6545351733318650650}
-          m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-          m_MethodName: Play
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 3958418638716549054, guid: 7167502b10712e74e9b273bc9bfc72a9, type: 3}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 56b346de917806c4ebde1e6536a95875, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    onHealed:
-      m_PersistentCalls:
-        m_Calls: []
-    onDead:
-      m_PersistentCalls:
-        m_Calls: []
-    deadAnimation: Dead
---- !u!114 &1033002334123580938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018293432309773681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50dedd3c4bf6bf14eb7403361b80cd7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Events>k__BackingField:
-  - spineEvent: OnDamaging
-    unityHandler:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 179103634153991255}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 274f386bbdf3c354a8ac3261554592a7, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1033002334123580939}
-          m_TargetAssemblyTypeName: Entities.Enemy.EnemyEntities.MeleeEnemyEntity,
-            Assembly-CSharp
-          m_MethodName: EntityAttack
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1131824407509458679}
-          m_TargetAssemblyTypeName: Spine.Unity.SkeletonAnimation, spine-unity
-          m_MethodName: set_AnimationName
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Idle
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!82 &-4865304642308804391
+--- !u!82 &-3974129104011890114
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

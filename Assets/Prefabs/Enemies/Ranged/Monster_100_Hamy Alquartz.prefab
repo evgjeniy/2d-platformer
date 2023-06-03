@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4067423180870609978}
   - component: {fileID: 3488673541363444568}
   - component: {fileID: 2700777234669337982}
-  - component: {fileID: -1643058803867475098}
+  - component: {fileID: -5965249159505836273}
   m_Layer: 7
   m_Name: Monster_100_Hamy Alquartz
   m_TagString: Untagged
@@ -188,7 +188,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 2249810132234785056, guid: f50101f0effb2ee42a535abda4685dfc, type: 3}
+        - m_Target: {fileID: -5965249159505836273}
           m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_MethodName: PlayOneShot
           m_Mode: 2
@@ -249,7 +249,7 @@ MonoBehaviour:
             m_StringArgument: Idle
             m_BoolArgument: 0
           m_CallState: 2
---- !u!82 &-1643058803867475098
+--- !u!82 &-5965249159505836273
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

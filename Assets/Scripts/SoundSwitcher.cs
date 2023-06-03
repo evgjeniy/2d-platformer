@@ -25,13 +25,13 @@ public class SoundSwitcher : MonoBehaviour
 
     private void ChangeSound()
     {
-        image.sprite = _soundState ? soundOffSprite : soundOnSprite;
+        image.sprite = _soundState ? soundOnSprite : soundOffSprite;
         
         var backgroundAudio = FindObjectOfType<BackgroundAudio>();
         if (backgroundAudio == null) return;
         
-        if (_soundState) backgroundAudio.Disable();
-        else backgroundAudio.Enable();
+        if (_soundState) backgroundAudio.Enable();
+        else backgroundAudio.Disable();
         
         PlayerPrefs.SetString(StringConstants.SoundStateKey, _soundState.ToString());
         PlayerPrefs.Save();

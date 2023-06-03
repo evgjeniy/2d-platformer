@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2101879897970025176}
   - component: {fileID: 2066162094922448392}
   - component: {fileID: 4419864302101834403}
-  - component: {fileID: -7495299486295009798}
+  - component: {fileID: -7614474510611904178}
   m_Layer: 7
   m_Name: Monster_55_Magma Crab
   m_TagString: Untagged
@@ -188,7 +188,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 3958418638716549054, guid: 7167502b10712e74e9b273bc9bfc72a9, type: 3}
+        - m_Target: {fileID: -685758081447184080, guid: 984122cd7634ae14baee5922382846fa, type: 3}
           m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_MethodName: PlayOneShot
           m_Mode: 2
@@ -249,7 +249,7 @@ MonoBehaviour:
             m_StringArgument: Idle
             m_BoolArgument: 0
           m_CallState: 2
---- !u!82 &-7495299486295009798
+--- !u!82 &-7614474510611904178
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

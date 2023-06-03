@@ -423,7 +423,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   boss: {fileID: 493109610}
-  levelCompleteUi: {fileID: 910021603}
   onBossDead:
     m_PersistentCalls:
       m_Calls:
@@ -9504,6 +9503,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8845365954796290805, guid: 726793c752084ee4b94c592890fc7691, type: 3}
   m_PrefabInstance: {fileID: 1865098658}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1887492803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 723293719018988357, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+  m_PrefabInstance: {fileID: 910021601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1887492806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7703280342635695956, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+  m_PrefabInstance: {fileID: 910021601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887492803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1887492808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887492803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336f09eabf6d4c19bf6b4a9b6d8af852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCoinsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onCoinsChangedString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1887492806}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2078150490
 GameObject:
   m_ObjectHideFlags: 0

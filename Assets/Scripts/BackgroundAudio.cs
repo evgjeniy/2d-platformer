@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Utils;
 
@@ -8,6 +7,8 @@ public class BackgroundAudio : MonoBehaviour
     [SerializeField, Range(0.0f, 1.0f)] private float volume = 0.1f;
     [SerializeField] private bool loop = true;
     [SerializeField] private bool dontDestroyOnLoad = true;
+
+    public bool SoundState => GetComponent<AudioSource>().isPlaying;
 
     private void Awake()
     {
@@ -26,7 +27,6 @@ public class BackgroundAudio : MonoBehaviour
     private void FocusChanged(bool isFocused)
     {
         var source = gameObject.GetOrAddComponent<AudioSource>(SetupAudioSource);
-        source.ignoreListenerPause = true;
         
         if (isFocused) source.UnPause();
         else source.Pause();

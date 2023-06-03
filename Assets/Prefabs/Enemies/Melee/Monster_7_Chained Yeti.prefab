@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 8642676434481361910}
   - component: {fileID: 8533170214765282469}
   - component: {fileID: 8533170214765282468}
-  - component: {fileID: 7778393301411629534}
-  - component: {fileID: 1703592610330785823}
+  - component: {fileID: 1300125924031845473}
+  - component: {fileID: -4959515685841431894}
   m_Layer: 7
   m_Name: Monster_7_Chained Yeti
   m_TagString: Untagged
@@ -189,7 +189,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 3958418638716549054, guid: 7167502b10712e74e9b273bc9bfc72a9, type: 3}
+        - m_Target: {fileID: -685758081447184080, guid: 984122cd7634ae14baee5922382846fa, type: 3}
           m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_MethodName: PlayOneShot
           m_Mode: 2
@@ -207,7 +207,7 @@ MonoBehaviour:
     onDead:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7778393301411629534}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_MethodName: PlayOneShot
           m_Mode: 2
@@ -262,7 +262,7 @@ MonoBehaviour:
             m_StringArgument: Idle
             m_BoolArgument: 0
           m_CallState: 2
---- !u!82 &7778393301411629534
+--- !u!82 &1300125924031845473
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,7 +358,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1703592610330785823
+--- !u!82 &-4959515685841431894
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

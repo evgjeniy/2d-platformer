@@ -3,10 +3,13 @@ using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AdsCanvas : MonoBehaviour
+public class YangexAds : MonoBehaviour
 {
-    [SerializeField] private UnityEvent onRewarded;
+    [SerializeField, Min(180.0f)] private float timeToShowInterstitial = 180.0f;
     
+    [SerializeField, Space] private UnityEvent onRewarded;
+    [SerializeField, Space] private UnityEvent<string> onChangeLanguage;
+
     private void Awake() => YandexGamesSdk.CallbackLogging = true;
 
     private IEnumerator Start()
@@ -14,6 +17,7 @@ public class AdsCanvas : MonoBehaviour
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield break;
 #endif
+        if (YandexGamesSdk.IsInitialized) yield break;
 
         // Always wait for it if invoking something immediately in the first scene.
         yield return YandexGamesSdk.Initialize();
@@ -29,11 +33,36 @@ public class AdsCanvas : MonoBehaviour
 
             yield return new WaitForSecondsRealtime(0.25f);
         }
+        
+        PlayerAccount.GetProfileData(result =>
+        {
+            if (result != default) onChangeLanguage?.Invoke(result.lang);
+        });
+
+        OnShowInterstitialButtonClick();
+        OnShowStickyAdButtonClick();
     }
 
-    public void OnShowInterstitialButtonClick() => InterstitialAd.Show();
+    private IEnumerator InterstitialCoroutine()
+    {
+        yield return new WaitForSeconds(timeToShowInterstitial);
+        OnShowInterstitialButtonClick();
+    }
 
-    public void OnShowVideoButtonClick() => VideoAd.Show(onRewardedCallback: onRewarded.Invoke);
+    public void OnShowInterstitialButtonClick() => InterstitialAd.Show(onCloseCallback: _ => StartCoroutine(InterstitialCoroutine()));
+
+    public void OnShowVideoButtonClick()
+    {
+        var backgroundAudio = FindObjectOfType<BackgroundAudio>()?.GetComponent<AudioSource>();
+
+        if (backgroundAudio == null || backgroundAudio.isPlaying == false)
+            VideoAd.Show(onRewardedCallback: onRewarded.Invoke);
+        else
+            VideoAd.Show(onRewardedCallback: onRewarded.Invoke,
+                onOpenCallback: backgroundAudio.Pause,
+                onCloseCallback: backgroundAudio.UnPause,
+                onErrorCallback: _ => backgroundAudio.UnPause());
+    }
 
     public void OnShowStickyAdButtonClick() => StickyAd.Show();
 

@@ -5,6 +5,10 @@ using Utils;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField, Min(0.0f)] private float loadNextLevelDelay = 0.6f;
+
+    public void LoadNextLevel(string sceneName) => LoadSceneNextFrame(sceneName, loadNextLevelDelay);
+    
     public void LoadSceneNextFrame(string sceneName) => LoadSceneNextFrame(sceneName, null);
     
     private void LoadSceneNextFrame(string sceneName, float? delay)
