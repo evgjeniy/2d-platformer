@@ -3,7 +3,7 @@ using Utils;
 
 namespace Spawners
 {
-    public abstract class BaseSpawner<T> : MonoTransform where T : Component
+    public abstract class BaseSpawner<T> : MonoCashed where T : Component
     {
         [SerializeField] private T prefab;
         [SerializeField] private Vector3 positionOffset;

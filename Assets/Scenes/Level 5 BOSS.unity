@@ -1126,11 +1126,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8603576938880988547, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
   m_PrefabInstance: {fileID: 876611944}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &876611949 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8057067670356832877, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+--- !u!114 &876611949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7532333986907753196, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
   m_PrefabInstance: {fileID: 876611944}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &908447650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1322,11 +1328,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}
---- !u!82 &960248440 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8241936, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}
+--- !u!114 &960248440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4139051124629382215, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}
   m_PrefabInstance: {fileID: 960248439}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &960248441 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19860434, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}
@@ -1407,7 +1419,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 876611949}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -2053,7 +2065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.preTeleport.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
+      value: SoundStateCheckedAudioSource, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onTeleport.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument

@@ -46,6 +46,80 @@ MonoBehaviour:
     m_Localized: "Main Menu\r"
     m_Metadata:
       m_Items: []
+  - m_Id: 617193974714368
+    m_Localized: Desktop Control
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617448887734272
+    m_Localized: Mobile Control
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617571529183232
+    m_Localized: First Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617744854601728
+    m_Localized: Second Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617841592029184
+    m_Localized: 'A - move to the left
+
+      D - move to the left
+
+      S - movement
+      down
+
+      W - jump / movement up
+
+      Space - attack'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618224922054656
+    m_Localized: "\u2190   - move to the left\n\u2192   - move to the right\n \u2193   
+      - movement down\n \u2191    - jump / movement up\nEnter - attack"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618679072903168
+    m_Localized: 'movement - use the touch joystick in the required part of the screen
+
+      attack
+      - tap once in the required part of the screen
+
+
+      example:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619162999115776
+    m_Localized: 'First Player
+
+      Attack Area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619516927070208
+    m_Localized: 'First Player
+
+      Movement Area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619848100925440
+    m_Localized: 'Second Player
+
+      Attack Area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619951838646272
+    m_Localized: 'Second Player
+
+      Movement Area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 624013262901248
+    m_Localized: 'help
+
+      control'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

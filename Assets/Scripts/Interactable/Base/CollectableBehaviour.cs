@@ -15,7 +15,7 @@ namespace Interactable.Base
         [SerializeField] private float yMoveDuration = 0.5f;
         [SerializeField] private Ease yMoveEase = Ease.OutExpo;
         
-        public virtual void PlayCollectAnimation(MonoTransform collectable, System.Action onPlay = null, System.Action onKill = null)
+        public virtual void PlayCollectAnimation(MonoCashed collectable, System.Action onPlay = null, System.Action onKill = null)
         {
             collectable.GetComponent<SpriteRenderer>()?.DOFade(0.0f, fadeOffDuration)
                 .SetEase(fadeOffEase).SetLink(collectable.gameObject);

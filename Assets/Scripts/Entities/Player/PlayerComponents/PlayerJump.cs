@@ -2,6 +2,7 @@
 using Overlaps2D;
 using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
 namespace Entities.Player.PlayerComponents
 {
@@ -16,8 +17,7 @@ namespace Entities.Player.PlayerComponents
         [SerializeField] private LayerMask ladderLayer;
         [SerializeField] private LayerMask bubbleLayer;
 
-        [Space, SerializeField] private AudioSource onBubbleJump;
-        [SerializeField] private AudioClip bubbleSound;
+        [SerializeField] private UnityEvent onBubbleJump;
 
         private PlayerEntity _player;
         private float? _tempGravityScale;
@@ -67,8 +67,7 @@ namespace Entities.Player.PlayerComponents
             if (groundCheckOverlap.Colliders.Any(c =>
                     Mathf.Abs(Mathf.Pow(2, c.gameObject.layer) - bubbleLayer.value) < 0.01f))
             {
-                onBubbleJump.clip = bubbleSound;
-                onBubbleJump.PlayDelayed(0.05f);
+                _player.InvokeNextFrame(_ => onBubbleJump?.Invoke(), 0.05f);
             }
 
             _player.Rigidbody.velocity = new Vector2(_player.Rigidbody.velocity.x, jumpVelocityY);

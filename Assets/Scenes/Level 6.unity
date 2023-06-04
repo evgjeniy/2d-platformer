@@ -2695,11 +2695,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8603576938880988547, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
   m_PrefabInstance: {fileID: 808266117}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &808266120 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8057067670356832877, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
+--- !u!114 &808266120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7532333986907753196, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
   m_PrefabInstance: {fileID: 808266117}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &808266121 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7044339406892177608, guid: bdaec16f990ff214fa50adfc043adfdd, type: 3}
@@ -19564,7 +19570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1957792744, guid: c85c6fa56204ca54faa927a53f92298f, type: 3}
       propertyPath: onGameOver.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
+      value: SoundStateCheckedAudioSource, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1957792744, guid: c85c6fa56204ca54faa927a53f92298f, type: 3}
       propertyPath: onGameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument

@@ -1,4 +1,6 @@
-﻿namespace Utils
+﻿using UnityEngine;
+
+namespace Utils
 {
     public static class StringConstants
     {
@@ -9,4 +11,17 @@
         public const string SoundStateKey = nameof(SoundStateKey);
         public const string CoinsSaveKey = nameof(CoinsSaveKey);
     }
+
+    public static class Sound
+    {
+        public static bool State
+        {
+            get => PlayerPrefs.GetString(StringConstants.SoundStateKey, "True") == "True";
+            set
+            {
+                PlayerPrefs.SetString(StringConstants.SoundStateKey, value.ToString());
+                PlayerPrefs.Save();
+            }
+        }
+    } 
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2142925328}
   - component: {fileID: 5510799267053863808}
   - component: {fileID: 2698681774625850243}
+  - component: {fileID: 8559040364980024073}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -147,8 +148,8 @@ MonoBehaviour:
     onCoinCollect:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2698681774625850243}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        - m_Target: {fileID: 8559040364980024073}
+          m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
@@ -277,3 +278,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8559040364980024073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060518538092894911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

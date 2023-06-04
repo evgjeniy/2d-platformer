@@ -5358,8 +5358,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8057067670356832877}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 7532333986907753196}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -5520,8 +5520,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8057067670356832877}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 7532333986907753196}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -5682,8 +5682,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8057067670356832877}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 7532333986907753196}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -5844,8 +5844,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8057067670356832877}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 7532333986907753196}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -6310,6 +6310,7 @@ GameObject:
   - component: {fileID: 7044339406892177609}
   - component: {fileID: 7044339406892177608}
   - component: {fileID: 8057067670356832877}
+  - component: {fileID: 7532333986907753196}
   m_Layer: 0
   m_Name: User Interface
   m_TagString: Untagged
@@ -6446,6 +6447,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7532333986907753196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044339406892177611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7044339407036495032
 GameObject:
   m_ObjectHideFlags: 0

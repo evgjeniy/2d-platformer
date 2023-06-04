@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8533170214765282468}
   - component: {fileID: 1300125924031845473}
   - component: {fileID: -4959515685841431894}
+  - component: {fileID: -2455300571025051257}
   m_Layer: 7
   m_Name: Monster_7_Chained Yeti
   m_TagString: Untagged
@@ -189,8 +190,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: -685758081447184080, guid: 984122cd7634ae14baee5922382846fa, type: 3}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        - m_Target: {fileID: -5991691224299650311, guid: 984122cd7634ae14baee5922382846fa, type: 3}
+          m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
@@ -454,6 +455,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2455300571025051257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8533170214765282470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5591014374661378706
 PrefabInstance:
   m_ObjectHideFlags: 0

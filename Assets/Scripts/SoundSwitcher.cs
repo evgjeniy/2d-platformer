@@ -8,32 +8,24 @@ public class SoundSwitcher : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Sprite soundOnSprite;
     [SerializeField] private Sprite soundOffSprite;
-
-    private bool _soundState;
-
-    private void Start()
-    {
-        _soundState = PlayerPrefs.GetString(StringConstants.SoundStateKey, "True") == "True";
-        this.InvokeNextFrame(switcher => switcher.ChangeSound());
-    }
     
+    private void Start() => this.InvokeNextFrame(switcher => switcher.UpdateSound());
+
     public void Switch()
     {
-        _soundState = !_soundState;
-        ChangeSound();
+        Sound.State = !Sound.State;
+        UpdateSound();
     }
 
-    private void ChangeSound()
+    private void UpdateSound()
     {
-        image.sprite = _soundState ? soundOnSprite : soundOffSprite;
+        var soundState = Sound.State;
+        image.sprite = soundState ? soundOnSprite : soundOffSprite;
         
         var backgroundAudio = FindObjectOfType<BackgroundAudio>();
         if (backgroundAudio == null) return;
         
-        if (_soundState) backgroundAudio.Enable();
+        if (soundState) backgroundAudio.Enable();
         else backgroundAudio.Disable();
-        
-        PlayerPrefs.SetString(StringConstants.SoundStateKey, _soundState.ToString());
-        PlayerPrefs.Save();
     }
 }

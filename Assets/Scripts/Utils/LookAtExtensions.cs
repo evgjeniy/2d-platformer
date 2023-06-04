@@ -4,10 +4,10 @@ namespace Utils
 {
     public static class LookAtExtensions
     {
-        public static void LookAt(this MonoTransform from, Transform target) => LookAt(from.transform, target);
-        public static void LookAt(this MonoTransform from, Vector3 target) => LookAt(from.transform, target);
-        public static void LookAt(this MonoTransform from, Vector2 target) => LookAt(from.transform, target);
-        public static void LookAt(this MonoTransform from, float xDirection) => LookAt(from.transform, xDirection);
+        public static void LookAt(this MonoCashed from, Transform target) => LookAt(from.transform, target);
+        public static void LookAt(this MonoCashed from, Vector3 target) => LookAt(from.transform, target);
+        public static void LookAt(this MonoCashed from, Vector2 target) => LookAt(from.transform, target);
+        public static void LookAt(this MonoCashed from, float xDirection) => LookAt(from.transform, xDirection);
         
         public static void LookAt(this GameObject from, Transform target) => LookAt(from.transform, target);
         public static void LookAt(this GameObject from, Vector3 target) => LookAt(from.transform, target);

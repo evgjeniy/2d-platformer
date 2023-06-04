@@ -21,7 +21,7 @@ namespace Interactable
     public class ChestKey : CollectableBehaviour, IInteractable, ICollectableItem
     {
         [field: Header("Chest Key Settings")]
-        [field: SerializeField] public MonoTransform Chest { get; private set; }
+        [field: SerializeField] public MonoCashed Chest { get; private set; }
 
         [SerializeField] private UnityEvent onKeyCollected;
 

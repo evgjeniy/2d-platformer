@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8224926, guid: 07f89bdb820892e49bcd5c32bf299006, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19931990, guid: 07f89bdb820892e49bcd5c32bf299006, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -86,6 +90,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.27
+--- !u!114 &-9152478379640790479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574379288460093920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 1
 --- !u!114 &-4907174260730568623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,5 +117,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable:
     damage: 20
-    knockForce: 0
   speed: 2

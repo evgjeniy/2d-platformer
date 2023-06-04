@@ -21,18 +21,6 @@ public class YangexAds : MonoBehaviour
 
         // Always wait for it if invoking something immediately in the first scene.
         yield return YandexGamesSdk.Initialize();
-
-        while (true)
-        {
-            // _authorizationStatusText.color = PlayerAccount.IsAuthorized ? Color.green : Color.red;
-            // if (PlayerAccount.IsAuthorized)
-            //    _personalProfileDataPermissionStatusText.color =
-            //        PlayerAccount.HasPersonalProfileDataPermission ? Color.green : Color.red;
-            // else
-            //     _personalProfileDataPermissionStatusText.color = Color.red;
-
-            yield return new WaitForSecondsRealtime(0.25f);
-        }
         
         PlayerAccount.GetProfileData(result =>
         {
@@ -41,6 +29,18 @@ public class YangexAds : MonoBehaviour
 
         OnShowInterstitialButtonClick();
         OnShowStickyAdButtonClick();
+
+        /* while (true)
+        {
+            _authorizationStatusText.color = PlayerAccount.IsAuthorized ? Color.green : Color.red;
+            if (PlayerAccount.IsAuthorized)
+               _personalProfileDataPermissionStatusText.color =
+                   PlayerAccount.HasPersonalProfileDataPermission ? Color.green : Color.red;
+            else
+                _personalProfileDataPermissionStatusText.color = Color.red;
+
+            yield return new WaitForSecondsRealtime(0.25f);
+        } */
     }
 
     private IEnumerator InterstitialCoroutine()
@@ -66,7 +66,7 @@ public class YangexAds : MonoBehaviour
 
     public void OnShowStickyAdButtonClick() => StickyAd.Show();
 
-    public void OnHideStickyAdButtonClick() => StickyAd.Hide();
+    /* public void OnHideStickyAdButtonClick() => StickyAd.Hide();
 
     public void OnAuthorizeButtonClick() => PlayerAccount.Authorize();
 
@@ -74,7 +74,7 @@ public class YangexAds : MonoBehaviour
 
     public void OnGetProfileDataButtonClick()
     {
-        PlayerAccount.GetProfileData((result) =>
+        PlayerAccount.GetProfileData(result =>
         {
             var playerName = result.publicName;
             if (string.IsNullOrEmpty(playerName)) playerName = "Anonymous";
@@ -113,16 +113,16 @@ public class YangexAds : MonoBehaviour
 
     public void OnSetCloudSaveDataButtonClick()
     {
-        // PlayerAccount.SetCloudSaveData(_cloudSaveDataInputField.text);
+        PlayerAccount.SetCloudSaveData(_cloudSaveDataInputField.text);
     }
 
     public void OnGetCloudSaveDataButtonClick()
     {
-        // PlayerAccount.GetCloudSaveData(data => _cloudSaveDataInputField.text = data);
+        PlayerAccount.GetCloudSaveData(data => _cloudSaveDataInputField.text = data);
     }
 
     public void OnGetEnvironmentButtonClick()
     {
         Debug.Log($"Environment = {JsonUtility.ToJson(YandexGamesSdk.Environment)}");
-    }
+    } */
 }

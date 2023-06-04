@@ -1,19 +1,11 @@
-using UnityEngine;
-using Utils;
-
-public class BackgroundAudio : MonoBehaviour
+public class BackgroundAudio : SoundStateCheckedAudioSource
 {
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField, Range(0.0f, 1.0f)] private float volume = 0.1f;
-    [SerializeField] private bool loop = true;
-    [SerializeField] private bool dontDestroyOnLoad = true;
-
-    public bool SoundState => GetComponent<AudioSource>().isPlaying;
-
-    private void Awake()
+    protected override void PostAwake()
     {
         if (FindObjectsOfType<BackgroundAudio>().Length > 1) Destroy(gameObject);
         else Initialize();
+        
+        base.PostAwake();
     }
 
     private void OnEnable() => FocusChanged(true);
@@ -26,23 +18,12 @@ public class BackgroundAudio : MonoBehaviour
 
     private void FocusChanged(bool isFocused)
     {
-        var source = gameObject.GetOrAddComponent<AudioSource>(SetupAudioSource);
-        
-        if (isFocused) source.UnPause();
-        else source.Pause();
+        if (isFocused) UnPause();
+        else Pause();
     }
 
     private void Initialize()
     {
-        if (dontDestroyOnLoad) DontDestroyOnLoad(gameObject);
-        SetupAudioSource(gameObject.GetOrAddComponent<AudioSource>(SetupAudioSource));
-    }
-
-    private void SetupAudioSource(AudioSource audioSource)
-    {
-        audioSource.loop = loop;
-        audioSource.volume = volume;
-        audioSource.clip ??= audioClip;
-        audioSource.clip.IfNotNull(_ => audioSource.Play());
+        DontDestroyOnLoad(gameObject);
     }
 }

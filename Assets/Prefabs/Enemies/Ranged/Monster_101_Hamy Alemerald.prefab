@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8340989980608565523}
   - component: {fileID: -3879554709063566919}
   - component: {fileID: 3054545074606616222}
+  - component: {fileID: 603703279250591708}
   m_Layer: 7
   m_Name: Monster_101_Hamy Alemerald
   m_TagString: Untagged
@@ -188,8 +189,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: -5965249159505836273, guid: 49d934dbfacce1a45993c97d59d0a735, type: 3}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        - m_Target: {fileID: 536115057805065400, guid: 49d934dbfacce1a45993c97d59d0a735, type: 3}
+          m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
           m_MethodName: PlayOneShot
           m_Mode: 2
           m_Arguments:
@@ -345,6 +346,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &603703279250591708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2875374684658032251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4088585192743730018
 PrefabInstance:
   m_ObjectHideFlags: 0

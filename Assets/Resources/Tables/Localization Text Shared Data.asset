@@ -43,6 +43,54 @@ MonoBehaviour:
     m_Key: "Game.MainMenu\r"
     m_Metadata:
       m_Items: []
+  - m_Id: 617193974714368
+    m_Key: Help.DesktopControl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617448887734272
+    m_Key: Help.MobileControl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617571529183232
+    m_Key: Help.FirstPlayerText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617744854601728
+    m_Key: Help.SecondPlayerText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 617841592029184
+    m_Key: Help.FirstPlayerDesktopControlText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618224922054656
+    m_Key: Help.SecondPlayerDesktopControlText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618679072903168
+    m_Key: Help.PlayerMobileControlText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619162999115776
+    m_Key: Help.FirstPlayerAttack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619516927070208
+    m_Key: Help.FirstPlayerMovement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619848100925440
+    m_Key: Help.SecondPlayerAttack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 619951838646272
+    m_Key: Help.SecondPlayerMovement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 624013262901248
+    m_Key: Help.HelpButtonText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

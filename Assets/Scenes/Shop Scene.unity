@@ -652,8 +652,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286767222}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 1286767224}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -688,6 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47748512b9c346d0b7f86b7be696b552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadNextLevelDelay: 0.6
 --- !u!1 &104244011
 GameObject:
   m_ObjectHideFlags: 0
@@ -4485,8 +4486,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286767222}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 1286767224}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -7792,8 +7793,8 @@ MonoBehaviour:
   OnItemBought:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286767222}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 1286767224}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -7820,8 +7821,8 @@ MonoBehaviour:
   OnItemSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286767222}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 1286767224}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -12327,7 +12328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0000019967556}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1165927621
@@ -13759,8 +13760,8 @@ MonoBehaviour:
   OnItemBought:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286767222}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 1286767224}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -13787,8 +13788,8 @@ MonoBehaviour:
   OnItemSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286767222}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 1286767224}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -13852,6 +13853,7 @@ GameObject:
   - component: {fileID: 1286767218}
   - component: {fileID: 1286767222}
   - component: {fileID: 1286767223}
+  - component: {fileID: 1286767224}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -14055,6 +14057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694cd397f41f47659ce1cd4757af48a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToShowInterstitial: 180
   onRewarded:
     m_PersistentCalls:
       m_Calls:
@@ -14070,6 +14073,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onChangeLanguage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1286767224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286767217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
 --- !u!1 &1287693203
 GameObject:
   m_ObjectHideFlags: 0
@@ -20762,7 +20781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0000019967556}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1942902792

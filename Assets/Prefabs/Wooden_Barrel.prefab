@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2327209579914772036}
   - component: {fileID: 286508230085270888}
   - component: {fileID: 6572674237657998754}
+  - component: {fileID: -2802599951363500492}
   m_Layer: 10
   m_Name: Wooden_Barrel
   m_TagString: Untagged
@@ -237,8 +238,8 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 286508230085270888}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: -2802599951363500492}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
@@ -249,6 +250,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-2802599951363500492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143204823410597401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
 --- !u!1 &8520155474385737463
 GameObject:
   m_ObjectHideFlags: 0

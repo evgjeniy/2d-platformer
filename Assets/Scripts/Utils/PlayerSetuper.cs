@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Agava.YandexGames;
 using DG.Tweening;
 using Entities.Player;
 using InputScripts;
@@ -23,7 +24,7 @@ namespace Utils
         private static void SetupPlayerHealthBar(RectTransform canvasRect, PlayerInputType inputType)
         {
             if (canvasRect == null) return;
-
+            
             var healthBarSlider = canvasRect.GetComponentInChildren<Slider>();
             if (healthBarSlider == null) return;
 
@@ -37,11 +38,11 @@ namespace Utils
 
             var anchors = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 1.0f);
 
-            healthBarRect.pivot = anchors;
-            healthBarRect.anchorMax = anchors;
-            healthBarRect.anchorMin = anchors;
+            healthBarRect.pivot = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 1.0f);
+            healthBarRect.anchorMin = new Vector2(isFirstPlayer ? 0.0f : 0.5f, 1.0f);
+            healthBarRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 1.0f);
 
-            var healthBarLocalPosition = canvasRect.sizeDelta / 2.0f - Vector2.one * 5;
+            var healthBarLocalPosition = canvasRect.sizeDelta / 2.0f - Vector2.one * 10;
             healthBarLocalPosition.x *= isFirstPlayer ? -1 : 1;
             healthBarRect.localPosition = healthBarLocalPosition;
         }
@@ -61,7 +62,7 @@ namespace Utils
 
             joystickRect.pivot = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 0.0f);
             joystickRect.anchorMin = new Vector2(isFirstPlayer ? 0.0f : 0.5f, 0.0f);
-            joystickRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 0.6f);
+            joystickRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 0.5f);
 
             joystickRect.DOAnchorPos(Vector2.zero, 0.1f);
         }
@@ -80,7 +81,7 @@ namespace Utils
             if (joystickRect == null) return;
 
             joystickRect.pivot = new Vector2(isFirstPlayer ? 0.0f : 1.0f, 1.0f);
-            joystickRect.anchorMin = new Vector2(isFirstPlayer ? 0.0f : 0.5f, 0.6f);
+            joystickRect.anchorMin = new Vector2(isFirstPlayer ? 0.0f : 0.5f, 0.5f);
             joystickRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 1.0f);
 
             joystickRect.DOAnchorPos(Vector2.zero, 0.1f);

@@ -6,7 +6,7 @@ namespace Interactable.InteractableAnimations
 {
     public static class AnimationsShortcuts
     {
-        public static void PlayBounceJumpAnimationWithFade(this MonoTransform gameObject, float yOffset = 1.0f, Action onPlay = null, Action onKill = null) =>
+        public static void PlayBounceJumpAnimationWithFade(this MonoCashed gameObject, float yOffset = 1.0f, Action onPlay = null, Action onKill = null) =>
             PlayBounceJumpAnimationWithFade(gameObject.transform, yOffset, onPlay, onKill);
 
         public static void PlayBounceJumpAnimationWithFade(this Transform gameObject, float yOffset = 1.0f, Action onPlay = null, Action onKill = null)
@@ -18,7 +18,7 @@ namespace Interactable.InteractableAnimations
                 sequence.Insert(0, gameObject.GetComponent<SpriteRenderer>()?.DOFade(0.0f, 0.7f).SetEase(Ease.InExpo));
         }
         
-        public static void PlayBounceJumpAnimation(this MonoTransform gameObject, float yOffset = 1.0f, Action onPlay = null, Action onKill = null) =>
+        public static void PlayBounceJumpAnimation(this MonoCashed gameObject, float yOffset = 1.0f, Action onPlay = null, Action onKill = null) =>
             PlayBounceJumpAnimation(gameObject.transform, yOffset, onPlay, onKill);
 
         public static void PlayBounceJumpAnimation(this Transform gameObject, float yOffset = 1.0f, Action onPlay = null, Action onKill = null) =>

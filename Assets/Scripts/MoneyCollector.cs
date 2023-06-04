@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using Utils;
 
-public class MoneyCollector : MonoTransform
+public class MoneyCollector : MonoCashed
 {
     public UnityEvent<int> onCoinsChanged;
     public UnityEvent<string> onCoinsChangedString;
