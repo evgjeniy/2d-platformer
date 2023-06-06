@@ -24456,7 +24456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Controller>k__BackingField:
     <MovementComponent>k__BackingField:
-      moveSpeed: 25
+      moveSpeed: 35
       movementSmoothing: 0.05
       isAirControl: 1
     <JumpComponent>k__BackingField:
