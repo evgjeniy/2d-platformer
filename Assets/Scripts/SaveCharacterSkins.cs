@@ -9,13 +9,10 @@ public class SaveCharacterSkins : MonoBehaviour
 
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey(StringConstants.ItemParamsContainerSaveKey))
-        {
-            PlayerPrefs.SetString(StringConstants.ItemParamsContainerSaveKey, StringConstants.BaseShopSet);
-            PlayerPrefs.Save();
-        }
-        
-        var savedJson = PlayerPrefs.GetString(StringConstants.ItemParamsContainerSaveKey);
+        if (YandexCloudSaveData.Get(StringConstants.ItemParamsContainerSaveKey) is null)
+            YandexCloudSaveData.Save(StringConstants.ItemParamsContainerSaveKey, StringConstants.BaseShopSet);
+
+        var savedJson = YandexCloudSaveData.Get(StringConstants.ItemParamsContainerSaveKey);
         _boughtSkins = JsonConvert.DeserializeObject<List<string>>(savedJson);
     }
 
@@ -27,20 +24,13 @@ public class SaveCharacterSkins : MonoBehaviour
         SaveData();
     }
 
-    private void SaveData()
-    {
-        PlayerPrefs.SetString(StringConstants.ItemParamsContainerSaveKey, JsonConvert.SerializeObject(_boughtSkins));
-        PlayerPrefs.Save();
-    }
+    private void SaveData() =>
+        YandexCloudSaveData.Save(StringConstants.ItemParamsContainerSaveKey, JsonConvert.SerializeObject(_boughtSkins));
 
 #if UNITY_EDITOR
 
     [ContextMenu("Clear Saved Skins")]
-    private void ClearPrefs()
-    {
-        PlayerPrefs.DeleteKey(StringConstants.ItemParamsContainerSaveKey);
-        PlayerPrefs.Save();
-    }
+    private void ClearPrefs() => YandexCloudSaveData.Delete(StringConstants.ItemParamsContainerSaveKey);
     
 #endif
 }

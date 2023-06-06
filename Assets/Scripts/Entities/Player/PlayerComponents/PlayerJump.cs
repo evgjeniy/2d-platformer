@@ -49,7 +49,7 @@ namespace Entities.Player.PlayerComponents
         public void TryJump(float jumpDirection)
         {
             if (jumpDirection == 0.0f) return;
-            if (Mathf.Abs(jumpDirection) <= 0.5f) return;
+            if (Mathf.Abs(jumpDirection) <= 0.4f) return;
 
             jumpDirection *= Time.fixedDeltaTime;
             

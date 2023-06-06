@@ -2,6 +2,7 @@
 using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
 public class YangexAds : MonoBehaviour
 {
@@ -49,19 +50,46 @@ public class YangexAds : MonoBehaviour
         OnShowInterstitialButtonClick();
     }
 
-    public void OnShowInterstitialButtonClick() => InterstitialAd.Show(onCloseCallback: _ => StartCoroutine(InterstitialCoroutine()));
+    public void OnShowInterstitialButtonClick()
+    {
+        if (Sound.State)
+        {
+            InterstitialAd.Show(
+                onOpenCallback: () => Sound.State = false,
+                onOfflineCallback: () => Sound.State = false,
+                onCloseCallback: _ =>
+                {
+                    Sound.State = true;
+                    StartCoroutine(InterstitialCoroutine());
+                },
+                onErrorCallback: _ =>
+                {
+                    Sound.State = true;
+                    StartCoroutine(InterstitialCoroutine());
+                });
+        }
+        else
+        {
+            InterstitialAd.Show(
+                onCloseCallback: _ => StartCoroutine(InterstitialCoroutine()),
+                onErrorCallback: _ => StartCoroutine(InterstitialCoroutine()));
+        }
+    }
 
     public void OnShowVideoButtonClick()
-    {
-        var backgroundAudio = FindObjectOfType<BackgroundAudio>()?.GetComponent<AudioSource>();
-
-        if (backgroundAudio == null || backgroundAudio.isPlaying == false)
-            VideoAd.Show(onRewardedCallback: onRewarded.Invoke);
-        else
-            VideoAd.Show(onRewardedCallback: onRewarded.Invoke,
-                onOpenCallback: backgroundAudio.Pause,
-                onCloseCallback: backgroundAudio.UnPause,
-                onErrorCallback: _ => backgroundAudio.UnPause());
+    {   
+        if (Sound.State)
+        {
+            VideoAd.Show(onOpenCallback: () => Sound.State = false,
+                onCloseCallback: () => Sound.State = true,
+                onErrorCallback: _ => Sound.State = true,
+                onRewardedCallback: () =>
+                {
+                    Sound.State = true;
+                    onRewarded.Invoke();
+                });
+        }
+        else VideoAd.Show(onRewardedCallback: onRewarded.Invoke);
     }
 
     public void OnShowStickyAdButtonClick() => StickyAd.Show();

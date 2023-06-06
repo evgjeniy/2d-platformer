@@ -1905,7 +1905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onTeleport.m_PersistentCalls.m_Calls.Array.size
@@ -1917,18 +1917,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 876611947}
+      objectReference: {fileID: 876611949}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 876611947}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 876611946}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
@@ -1948,6 +1956,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.preTeleport.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
@@ -1961,10 +1973,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SaveScene
+      value: PlayOneShot
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SaveScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
@@ -2029,10 +2045,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneLoader, Assembly-CSharp
+      value: SoundStateCheckedAudioSource, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
@@ -2044,7 +2064,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 59dc039e6a3a3ad4a86a79ee2759b550, type: 3}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: Level 6
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
@@ -2081,10 +2113,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
+      propertyPath: <State>k__BackingField.onDead.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}

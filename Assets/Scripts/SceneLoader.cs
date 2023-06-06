@@ -18,20 +18,13 @@ public class SceneLoader : MonoBehaviour
         this.InvokeNextFrame(_ => SceneManager.LoadScene(sceneName), delay);
     }
 
-    public void SaveScene(string sceneName)
-    {
-        PlayerPrefs.SetString(StringConstants.LastLevelSceneSaveKey, sceneName);
-        PlayerPrefs.Save();
-    }
+    public void SaveScene(string sceneName) => 
+        YandexCloudSaveData.Save(StringConstants.LastLevelSceneSaveKey, sceneName);
     
 #if UNITY_EDITOR
 
     [ContextMenu("Clear Saved Scene")]
-    public void ClearSavedScene()
-    {
-        PlayerPrefs.DeleteKey(StringConstants.LastLevelSceneSaveKey);
-        PlayerPrefs.Save();
-    }
-    
+    public void ClearSavedScene() => YandexCloudSaveData.Delete(StringConstants.LastLevelSceneSaveKey);
+
 #endif
 }

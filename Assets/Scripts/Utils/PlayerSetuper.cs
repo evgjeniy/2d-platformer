@@ -13,7 +13,7 @@ namespace Utils
         public static void SetupPlayer(this PlayerEntity playerEntity, PlayerInputType inputType)
         {
             playerEntity.Controller.InputType = inputType;
-            playerEntity.Character.FromJson(PlayerPrefs.GetString(inputType.GetSaveKey(), StringConstants.StartCharacterSkin));
+            playerEntity.Character.FromJson(YandexCloudSaveData.Get(inputType.GetSaveKey(), StringConstants.StartCharacterSkin));
 
             var canvasRect = playerEntity.GetComponentInChildren<Canvas>()?.GetComponent<RectTransform>();
             SetupPlayerHealthBar(canvasRect, inputType);
@@ -50,9 +50,13 @@ namespace Utils
         private static void SetupPlayerJoystick(RectTransform canvasRect, PlayerInputType inputType)
         {
             if (canvasRect == null) return;
-
+            
             var joystick = canvasRect.GetComponentInChildren<JoystickController>();
             if (joystick == null) return;
+            
+#if !UNITY_WEBGL || UNITY_EDITOR
+            Object.Destroy(joystick.gameObject);
+#else
             
             var isFirstPlayer = inputType == PlayerInputType.FirstPlayer;
             joystick.controlPath = $"<Gamepad>/{(isFirstPlayer ? "left" : "right")}Stick";
@@ -65,6 +69,7 @@ namespace Utils
             joystickRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 0.5f);
 
             joystickRect.DOAnchorPos(Vector2.zero, 0.1f);
+#endif
         }
 
         private static void SetupPlayerAttackArea(RectTransform canvasRect, PlayerInputType inputType)
@@ -74,6 +79,9 @@ namespace Utils
             var attackArea = canvasRect.GetComponentInChildren<AttackMobileArea>();
             if (attackArea == null) return;
             
+#if !UNITY_WEBGL || UNITY_EDITOR
+            Object.Destroy(attackArea.gameObject);
+#else
             var isFirstPlayer = inputType == PlayerInputType.FirstPlayer;
             attackArea.controlPath = $"<Gamepad>/{(isFirstPlayer ? "left" : "right")}Stick/down";
 
@@ -85,6 +93,7 @@ namespace Utils
             joystickRect.anchorMax = new Vector2(isFirstPlayer ? 0.5f : 1.0f, 1.0f);
 
             joystickRect.DOAnchorPos(Vector2.zero, 0.1f);
+#endif
         }
         
         public static PlayerEntity GetNearestPlayer(this List<PlayerEntity> players, Transform target)

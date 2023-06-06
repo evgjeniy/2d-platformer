@@ -1,9 +1,11 @@
+using Utils;
+
 public class BackgroundAudio : SoundStateCheckedAudioSource
 {
     protected override void PostAwake()
     {
         if (FindObjectsOfType<BackgroundAudio>().Length > 1) Destroy(gameObject);
-        else Initialize();
+        else DontDestroyOnLoad(gameObject);
         
         base.PostAwake();
     }
@@ -18,12 +20,17 @@ public class BackgroundAudio : SoundStateCheckedAudioSource
 
     private void FocusChanged(bool isFocused)
     {
-        if (isFocused) UnPause();
-        else Pause();
-    }
-
-    private void Initialize()
-    {
-        DontDestroyOnLoad(gameObject);
+        Sound.State = isFocused;
+        
+        if (First.isPlaying)
+        {
+            if (isFocused) UnPause();
+            else Pause();
+        }
+        else
+        {
+            if (isFocused) Play();
+            else Stop();
+        }
     }
 }

@@ -44,8 +44,9 @@ namespace Spawners
         private static void TryLoadPlayerJson(PlayerInputType inputType, PlayerEntity newPlayer)
         {
             var playerSaveKey = inputType.GetSaveKey();
-            if (PlayerPrefs.HasKey(playerSaveKey))
-                newPlayer.Character.FromJson(PlayerPrefs.GetString(playerSaveKey));
+            var playerJson = YandexCloudSaveData.Get(playerSaveKey);
+            if (playerJson != null)
+                newPlayer.Character.FromJson(playerJson);
         }
 
         private void SetupPlayerDeadEvent(PlayerEntity newPlayer) => newPlayer.State.OnDead += () =>

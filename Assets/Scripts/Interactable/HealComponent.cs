@@ -2,6 +2,7 @@
 using Interactable.Base;
 using Spawners;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Interactable
@@ -13,6 +14,7 @@ namespace Interactable
     {
         [Header("Heal Settings")]
         [SerializeField] private float healValue;
+        [SerializeField] private UnityEvent onHealth; 
 
         public void Interact(MonoCashed<Collider2D> apple, Collider2D other)
         {
@@ -21,6 +23,7 @@ namespace Interactable
 
             PlayCollectAnimation(apple, onKill: apple.Destroy, onPlay: () =>
             {
+                onHealth?.Invoke();
                 apple.First.Disable();
                 apple.GetComponent<ParticleSpawner>()?.Spawn(apple.position + Vector3.up)?.Play();
             });

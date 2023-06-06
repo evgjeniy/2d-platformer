@@ -46,15 +46,14 @@ namespace Assets.HeroEditor.FantasyInventory.Scripts.Interface.Elements
         {
             var playerSaveKey = playerType.GetSaveKey();
 
-            Character.FromJson(PlayerPrefs.GetString(playerSaveKey, StringConstants.StartCharacterSkin));
+            Character.FromJson(YandexCloudSaveData.Get(playerSaveKey, StringConstants.StartCharacterSkin));
             
             SaveJson();
         }
 
         public void SaveJson()
         {
-            PlayerPrefs.SetString(playerType.GetSaveKey(), Character.ToJson());
-            PlayerPrefs.Save();
+            YandexCloudSaveData.Save(playerType.GetSaveKey(), Character.ToJson());
         }
     }
 }

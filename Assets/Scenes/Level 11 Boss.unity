@@ -426,6 +426,18 @@ MonoBehaviour:
   onBossDead:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 910021605}
+        m_TargetAssemblyTypeName: SoundStateCheckedAudioSource, Assembly-CSharp
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 59dc039e6a3a3ad4a86a79ee2759b550, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 910021603}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1269,7 +1281,7 @@ PrefabInstance:
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.preTeleport.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1277142321}
+      objectReference: {fileID: 1277142322}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onTeleport.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1328,7 +1340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.preTeleport.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
+      value: SoundStateCheckedAudioSource, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2972407397481596307, guid: 59c312d962fe05c4d99b614fbd8fce1a, type: 3}
       propertyPath: <State>k__BackingField.onTeleport.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -2067,11 +2079,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 459138, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}
   m_PrefabInstance: {fileID: 1277142318}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1277142321 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8241936, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}
+--- !u!114 &1277142322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4139051124629382215, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}
   m_PrefabInstance: {fileID: 1277142318}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb235bdfdd40fdaeaf520e7c47c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1299388961
 GameObject:
   m_ObjectHideFlags: 0

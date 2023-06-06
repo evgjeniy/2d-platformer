@@ -9,11 +9,11 @@ public class MoneyCollector : MonoCashed
 
     public int CoinsAmount
     {
-        get => PlayerPrefs.GetInt(StringConstants.CoinsSaveKey, 0);
+        get => int.Parse(YandexCloudSaveData.Get(StringConstants.CoinsSaveKey, "0"));
         set
         {
             if (value < 0) return;
-            PlayerPrefs.SetInt(StringConstants.CoinsSaveKey, value);
+            YandexCloudSaveData.Save(StringConstants.CoinsSaveKey, $"{value}");
             
             SendCoinsChanged();
         }
