@@ -2,14 +2,17 @@
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
-using Utils;
 
 public class LanguageSwitcher : MonoBehaviour
 {
+    [SerializeField] private Locale defaultLocale;
     [SerializeField] private List<Locale> locales;
-    
-    public void Switch(string language) => 
-        locales.Find(locale => locale.LocaleName.Contains(language.ToLower())).IfNotNull(Switch);
+
+    public void Switch(string language)
+    {
+        var locale = locales.Find(locale => locale.LocaleName.Contains(language.ToLower()));
+        Switch(locale == null ? defaultLocale : locale);
+    }
 
     private static void Switch(Locale locale) => LocalizationSettings.SelectedLocale = locale;
 }

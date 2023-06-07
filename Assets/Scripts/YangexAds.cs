@@ -22,11 +22,13 @@ public class YangexAds : MonoBehaviour
 
         // Always wait for it if invoking something immediately in the first scene.
         yield return YandexGamesSdk.Initialize();
-        
-        PlayerAccount.GetProfileData(result =>
+
+        if (!PlayerPrefs.HasKey("selected-locale"))
         {
-            if (result != default) onChangeLanguage?.Invoke(result.lang);
-        });
+            var internationalization = YandexGamesSdk.Environment.i18n;
+            var language = internationalization.tld == "com" ? "en" : internationalization.lang;
+            onChangeLanguage?.Invoke(language);
+        }
 
         OnShowInterstitialButtonClick();
         OnShowStickyAdButtonClick();
