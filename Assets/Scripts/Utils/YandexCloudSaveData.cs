@@ -25,7 +25,11 @@ namespace Utils
             return _saveDictionary.TryGetValue(key, out var value) ? value : defaultValue;
         }
 
-        public static void Delete(string key) => _saveDictionary.Remove(key);
+        public static void Delete(string key)
+        {
+            _saveDictionary.Remove(key);
+            SaveJsonToCloud();
+        }
 
         private static void SaveJsonToCloud()
         {
@@ -44,8 +48,8 @@ namespace Utils
             if (_saveDictionary != null) return;
 
 #if !UNITY_WEBGL || UNITY_EDITOR
-            var jsonSaveDictionary = PlayerPrefs.GetString("SaveDataDictionary", null);
-            _saveDictionary = jsonSaveDictionary == null
+            var jsonSaveDictionary = PlayerPrefs.GetString("SaveDataDictionary", "");
+            _saveDictionary = jsonSaveDictionary == ""
                 ? new Dictionary<string, string>()
                 : JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonSaveDictionary);
 #else
@@ -66,8 +70,6 @@ namespace Utils
                 _saveDictionary.Clear();
                 _saveDictionary = null;
             }
-
-            Debug.Log(_saveDictionary);
         }
 #endif
     }
