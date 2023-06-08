@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82200656418675434, guid: 35ad08272de78064cbd645a70f31f454, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198451450481698882, guid: 35ad08272de78064cbd645a70f31f454, type: 3}
       propertyPath: stopAction
       value: 2

@@ -21,6 +21,7 @@ namespace Entities.Player.PlayerComponents
 
         private PlayerEntity _player;
         private float? _tempGravityScale;
+        private double _elapsedTime;
 
         public State JumpState { get; private set; } 
 
@@ -28,6 +29,8 @@ namespace Entities.Player.PlayerComponents
 
         public void CheckJumpState()
         {
+            _elapsedTime += Time.fixedDeltaTime;
+            
             groundCheckOverlap.Perform();
 
             var colliders = groundCheckOverlap.Colliders;
@@ -67,7 +70,11 @@ namespace Entities.Player.PlayerComponents
             if (groundCheckOverlap.Colliders.Any(c =>
                     Mathf.Abs(Mathf.Pow(2, c.gameObject.layer) - bubbleLayer.value) < 0.01f))
             {
-                _player.InvokeNextFrame(_ => onBubbleJump?.Invoke(), 0.05f);
+                if (_elapsedTime >= 0.1f)
+                {
+                    onBubbleJump?.Invoke();
+                    _elapsedTime = 0.0f;
+                }
             }
 
             _player.Rigidbody.velocity = new Vector2(_player.Rigidbody.velocity.x, jumpVelocityY);

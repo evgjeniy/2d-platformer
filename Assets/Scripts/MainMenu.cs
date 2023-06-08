@@ -9,7 +9,9 @@ public class MainMenu : SceneLoader
     public void PlayGame(bool isTwoPlayers)
     {
         PlayerSpawner.IsTwoPlayers = isTwoPlayers;
-        
-        LoadSceneNextFrame(YandexCloudSaveData.Get(StringConstants.LastLevelSceneSaveKey, firstLevelName));
+
+        var sceneName = YandexCloudSaveData.Get(StringConstants.LastLevelSceneSaveKey, firstLevelName);
+        Debug.Log(sceneName); 
+        LoadSceneNextFrame(sceneName);
     }
 }

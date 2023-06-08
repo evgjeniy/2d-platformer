@@ -6,18 +6,28 @@ public class SoundStateCheckedAudioSource : MonoCashed<AudioSource>
 {
     [SerializeField] private bool playOnAwake;
 
+    private bool FocusedSoundState => Sound.State && Application.isFocused;
+    
     protected override void PostAwake()
     {
         if (playOnAwake) Play();
     }
 
-    public void PlayOneShot(AudioClip clip) { if (Sound.State) First.PlayOneShot(clip); }
+    private void OnApplicationFocus(bool hasFocus) => FocusChanged(hasFocus);
+
+    public void PlayOneShot(AudioClip clip) { if (FocusedSoundState) First.PlayOneShot(clip); }
     
-    public void Play() { if (Sound.State) First.Play(); }
+    public void Play() { if (FocusedSoundState) First.Play(); }
     
     public void Stop() { First.Stop(); }
     
-    public void UnPause() { if (Sound.State) First.UnPause(); }
+    public void UnPause() { if (FocusedSoundState) First.UnPause(); }
     
     public void Pause() { First.Pause(); }
+
+    protected void FocusChanged(bool isFocused)
+    {
+        if (isFocused) UnPause();
+        else Pause();
+    }
 }

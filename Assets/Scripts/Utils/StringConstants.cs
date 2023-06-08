@@ -16,7 +16,11 @@ namespace Utils
     {
         public static bool State
         {
-            get => PlayerPrefs.GetString(StringConstants.SoundStateKey, "True") == "True";
+            get
+            {
+                if (!PlayerPrefs.HasKey(StringConstants.SoundStateKey)) State = true;
+                return PlayerPrefs.GetString(StringConstants.SoundStateKey) == "True";
+            }
             set
             {
                 PlayerPrefs.SetString(StringConstants.SoundStateKey, value.ToString());
