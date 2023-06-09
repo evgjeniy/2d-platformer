@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.HeroEditor.FantasyInventory.Scripts;
+using Agava.YandexGames;
 using Newtonsoft.Json;
 using UnityEngine;
 

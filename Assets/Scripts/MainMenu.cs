@@ -11,7 +11,6 @@ public class MainMenu : SceneLoader
         PlayerSpawner.IsTwoPlayers = isTwoPlayers;
 
         var sceneName = YandexCloudSaveData.Get(StringConstants.LastLevelSceneSaveKey, firstLevelName);
-        Debug.Log(sceneName); 
         LoadSceneNextFrame(sceneName);
     }
 }
