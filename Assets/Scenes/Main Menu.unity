@@ -2789,7 +2789,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 787916669}
-  - component: {fileID: 787916673}
   - component: {fileID: 787916670}
   - component: {fileID: 787916667}
   - component: {fileID: 787916672}
@@ -2844,21 +2843,6 @@ MonoBehaviour:
   onRewarded:
     m_PersistentCalls:
       m_Calls: []
-  onChangeLanguage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 860529538}
-        m_TargetAssemblyTypeName: LanguageSwitcher, Assembly-CSharp
-        m_MethodName: Switch
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &787916672
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2955,18 +2939,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &787916673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787916666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b165b686c714fed9afb4af109017486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &801934799
 GameObject:
   m_ObjectHideFlags: 0
@@ -4607,9 +4579,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onChangeLanguage:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1328189717
 MonoBehaviour:
   m_ObjectHideFlags: 0
