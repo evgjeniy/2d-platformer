@@ -26,7 +26,8 @@ namespace Utils
                 PlayerPrefs.SetString(StringConstants.SoundStateKey, value.ToString());
                 PlayerPrefs.Save();
 				
-				Object.FindObjectsOfType<BackgroundAudio>()?.enabled = value;
+				var backgroundAudio = Object.FindObjectOfType<BackgroundAudio>();
+                if (backgroundAudio != null) backgroundAudio.enabled = value;
             }
         }
     } 
