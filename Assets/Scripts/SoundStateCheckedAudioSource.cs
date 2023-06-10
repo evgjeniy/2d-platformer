@@ -27,7 +27,16 @@ public class SoundStateCheckedAudioSource : MonoCashed<AudioSource>
 
     protected void FocusChanged(bool isFocused)
     {
-        if (isFocused) UnPause();
-        else Pause();
+        if (isFocused) 
+		{
+			if (First.isPlaying)
+				UnPause();
+			else
+				Play();
+		}
+        else 
+		{
+			Pause();
+		}
     }
 }

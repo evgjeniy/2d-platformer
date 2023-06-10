@@ -34,19 +34,16 @@ public class YangexAds : MonoBehaviour
     {
         if (Sound.State)
         {
-            var backgroundAudio = FindObjectOfType<BackgroundAudio>();
-            
-            InterstitialAd.Show(
-                onOpenCallback: () => Sound.State = backgroundAudio.enabled = false,
-                onOfflineCallback: () => Sound.State = backgroundAudio.enabled = false,
+			InterstitialAd.Show(
+                onOpenCallback: () => Sound.State = false,
                 onCloseCallback: _ =>
                 {
-                    Sound.State = backgroundAudio.enabled = true;
+                    Sound.State = true;
                     StartCoroutine(InterstitialCoroutine());
                 },
                 onErrorCallback: _ =>
                 {
-                    Sound.State = backgroundAudio.enabled = true;
+                    Sound.State = true;
                     StartCoroutine(InterstitialCoroutine());
                 });
         }
@@ -62,14 +59,12 @@ public class YangexAds : MonoBehaviour
     {   
         if (Sound.State)
         {
-            var backgroundAudio = FindObjectOfType<BackgroundAudio>();
-            
-            VideoAd.Show(onOpenCallback: () => Sound.State = backgroundAudio.enabled = false,
-                onCloseCallback: () => Sound.State = backgroundAudio.enabled = true,
-                onErrorCallback: _ => Sound.State = backgroundAudio.enabled = true,
+			VideoAd.Show(onOpenCallback: () => Sound.State = false,
+                onCloseCallback: () => Sound.State = true,
+                onErrorCallback: _ => Sound.State = true,
                 onRewardedCallback: () =>
                 {
-                    Sound.State = backgroundAudio.enabled = true;
+                    Sound.State = true;
                     onRewarded.Invoke();
                 });
         }
